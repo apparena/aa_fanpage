@@ -5,11 +5,14 @@
 	<div class="row">
 		<div class="span1">
 			<div class="logo"></div>
-            <?php include_once("templates/menu_left.phtml"); ?>
+            <?php include_once("menu_left.phtml"); ?>
 		</div>
         <div class="span9">
             <!-- Header Slider -->
             <?php if ( $aa['config']['slider_activated']['value'] ) { ?>
+                <style>
+                    #galleria{ width: 700px; height: 400px; background: #000 }
+                </style>
                 <div id="galleria">
                     <img src="<?=$aa['config']['slider_slide1']['value'];?>" >
                     <?php if ( $aa['config']['slider_slide_amount']['value'] > 1 ) { ?>
@@ -25,6 +28,10 @@
                     <?php }  ?>
                 </div>
             <?php } ?>
+            <script>
+                Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+                Galleria.run('#galleria');
+            </script>
 
             <div class="content">
                 <?=$aa['config']['page1_content']['value'];?>
