@@ -2,7 +2,6 @@
 include_once ( '../init.php' );
 require_once('../libs/Zend/Feed/Rss.php');
 require_once('../libs/Zend/Feed/Atom.php');
-require_once('../libs/Zend/Feed/');
 require_once('../libs/Zend/Feed/Reader.php');
 try {
     $links = Zend_Feed_Reader::findFeedLinks( $aa['config']['rss_feed1_url']['value'] );
