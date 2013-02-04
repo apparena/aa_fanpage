@@ -1,5 +1,5 @@
 ===================================
-=     **Fanpage v2.5**      =
+=     *** Fanpage v2.5***      =
 ===================================
 Github: 	https://github.com/apparena/aa_template
 Docs: 		http://www.app-arena.com/docs/display/developer
