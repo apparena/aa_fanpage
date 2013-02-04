@@ -2,20 +2,13 @@
 include_once ( '../init.php' );
 require_once('../libs/Zend/Feed/Rss.php');
 require_once('../libs/Zend/Feed/Atom.php');
+require_once('../libs/Zend/Feed/');
 require_once('../libs/Zend/Feed/Reader.php');
 try {
     $links = Zend_Feed_Reader::findFeedLinks( $aa['config']['rss_feed1_url']['value'] );
 
-    /*if(isset($links->rdf)) {
-        echo $links->rdf, "\n";
-    }*/
-    if(isset($links->rss)) {
-        $channel = new Zend_Feed_Rss( $links->rss );
-        echo "Rss: " . $links->atom, "\n";
-    }
-    if(isset($links->atom)) {
-        $channel = new Zend_Feed_Atom( $links->atom );
-        echo "Atom: " . $links->atom, "\n";
+    foreach ($links as $link) {
+        $feed = Zend_Feed_Reader::import( $link['uri'] );
     }
 
 }
@@ -41,9 +34,10 @@ catch (Exception $e){
 
         <!-- RSS Feed Items -->
         <div class="span8">
-            <h3><?=$channel->title();?></h3>
+            <h3><?=$feed->getTitle();?></h3>
+            <h4>Anzahl Elemente: <?=$feed->count();?></h4>
             <?php
-            foreach ( $channel as $item ) { ?>
+            foreach ( $feed as $item ) { ?>
                 <div class="item">
                     <div class="thumbnail pull-left">
                         <?php
