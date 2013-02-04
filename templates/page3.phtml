@@ -28,22 +28,22 @@ catch (Exception $e){
         <div class="span8">
             <h3><?=$channel->title();?></h3>
             <?php
-            foreach ($channel as $item) {
-                echo $item->getTitle() . "<br>";
-                echo $item->getLink() . "<br>";
-                echo $item->getDescription() . "<br>";
-                echo $item->getAuthor() . "<br>";
-                echo $item->getCategory() . "<br>";
-                echo $item->getComments() . "<br>";
-                echo $item->getPubDate() . "<br>";
-            }
-            ?>
-            <div class="item">
-                <div class="thumbnail pull-left">
-
+            foreach ( $channel as $item ) { ?>
+                <div class="item">
+                    <div class="thumbnail pull-left">
+                        <?php
+                        echo $item->getTitle() . "<br>";
+                        echo $item->getLink() . "<br>";
+                        echo $item->getDescription() . "<br>";
+                        echo $item->getAuthor() . "<br>";
+                        echo $item->getCategory() . "<br>";
+                        echo $item->getComments() . "<br>";
+                        echo $item->getPubDate() . "<br>";
+                        ?>
+                    </div>
                 </div>
+            <?php } ?>
 
-            </div>
 
 
         </div>
