@@ -120,12 +120,26 @@ include_once("init.php");
         <div class="container-fluid">
             <nav>
                 <ul class="nav">
-                    <li><a onclick="aa_tmpl_load('index.phtml');"><?php __p("Home");?></a></li>
-                    <li><a onclick="aa_tmpl_load('localization.phtml');"><?php __p("localization");?></a></li>
-                    <li><a onclick="aa_tmpl_load('fb-demo.phtml');"><?php __p("FB");?></a></li>
-                    <li><a onclick="aa_tmpl_load('module_registration.phtml');"><?php __p("Register");?></a></li>
-                    <li><a onclick="aa_tmpl_load('form_validation.phtml');"><?php __p("Validation");?></a></li>
-                    <li><a onclick="aa_tmpl_load('db-demo.phtml');"><?php __p("DB");?></a></li>
+                    <li><a onclick="aa_tmpl_load('page1.phtml');"><?=$aa['config']['page1_caption']['value']?></a></li>
+                    <?php if ( $aa['config']['page2_activated']['value'] ) { ?>
+                        <li><a onclick="aa_tmpl_load('page2.phtml');"><?=$aa['config']['page2_caption']['value']?></a></li>
+                    <?php } if ( $aa['config']['page3_activated']['value'] ) { ?>
+                        <li><a onclick="aa_tmpl_load('page3.phtml');"><?=$aa['config']['page3_caption']['value']?></a></li>
+                    <?php } if ( $aa['config']['page4_activated']['value'] ) { ?>
+                        <li><a onclick="aa_tmpl_load('page4.phtml');"><?=$aa['config']['page4_caption']['value']?></a></li>
+                    <?php } if ( $aa['config']['page5_activated']['value'] ) { ?>
+                        <li><a onclick="aa_tmpl_load('page5.phtml');"><?=$aa['config']['page5_caption']['value']?></a></li>
+                    <?php } if ( $aa['config']['page6_activated']['value'] ) { ?>
+                        <li><a onclick="aa_tmpl_load('page6.phtml');"><?=$aa['config']['page6_caption']['value']?></a></li>
+                    <?php } if ( $aa['config']['page7_activated']['value'] ) { ?>
+                        <li><a onclick="aa_tmpl_load('page7.phtml');"><?=$aa['config']['page7_caption']['value']?></a></li>
+                    <?php } if ( $aa['config']['page8_activated']['value'] ) { ?>
+                        <li><a onclick="aa_tmpl_load('page8.phtml');"><?=$aa['config']['page8_caption']['value']?></a></li>
+                    <?php } if ( $aa['config']['page9_activated']['value'] ) { ?>
+                        <li><a onclick="aa_tmpl_load('page9.phtml');"><?=$aa['config']['page9_caption']['value']?></a></li>
+                    <?php } if ( $aa['config']['page10_activated']['value'] ) { ?>
+                        <li><a onclick="aa_tmpl_load('page10.phtml');"><?=$aa['config']['page10_caption']['value']?></a></li>
+                    <?php } ?>
                 </ul>
             </nav>
         </div>
@@ -245,28 +259,9 @@ if (isset($aaForJs['inst']['aa_app_secret'])) {
 </script>
 <?php } ?>
 
-
-<button id="admin_panel_new">New Admin Panel Button</button>
-
 <script src="js/components/jquery/jquery-1.7.1.min.js"></script>
 <!-- data-main attribute tells require.js to load scripts/main.js after require.js loads. -->
 <script data-main="js/main" src="js/require.js"></script>
 
-<script>
-    require(
-            [
-                'components/admin_panel/ui',
-                'components/flight/tools/debug/debug'
-            ],
-
-            function(apanel, debug) {
-                debug.enable(true);
-                //compose.mixin(registry, [advice.withAdvice, withLogging]);
-                /*require(['app/boot/page'], function(initialize) {
-                    initialize();
-                });*/
-            }
-    );
-</script>
 </body>
 </html>

@@ -6,6 +6,7 @@ require.config({
         jquery:'//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min',
         bootstrap:'//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min',
         facebook:'//connect.facebook.net/de_DE/all',
+        galleria:'libs/galleria/galleria-1.2.9.min',
         script:'script'
     },
     shim:{ // load required non AMD modules here...
@@ -18,6 +19,9 @@ require.config({
         facebook:{
             exports:'FB'
         },
+        galleria:{
+            deps:[ 'jquery' ]
+        },
         script:{
             deps:[ 'jquery', 'facebook' ]
         }
@@ -29,8 +33,9 @@ require.config({
 require([
     'facebook',
     'bootstrap',
+    'galleria',
     'script'
-], function (FB, bootstrap, script) {
+], function (FB, bootstrap, galleria, script) {
 
     FB.init({
         appId:aa.inst.fb_app_id, // App ID
