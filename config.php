@@ -3,13 +3,13 @@
  * Setup your app-model access credentials here
  */
 $aa_activated = true;
-$aa_app_id = 153;
-$aa_app_secret = "770a51440ac4e9c2dbe7345a791fbfc4";
+$aa_app_id = 247;
+$aa_app_secret = "59287e6fb6e398245f30d11ca92a0682";
 
 /**
  * Setup your database access data
  */
-$db_activated = true;
+$db_activated = false;
 $db_host = "localhost";
 $db_name = "apps_aa_template";
 $db_user = "aa_template";
