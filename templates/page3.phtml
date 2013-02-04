@@ -4,6 +4,19 @@ require_once('../libs/Zend/Feed/Rss.php');
 try {
     $channel = new Zend_Feed_Rss( $aa['config']['rss_feed1_url']['value'] );
     $feedArray = Zend_Feed::findFeeds('http://www.iconsultants.eu/blog/');
+
+    $links = Zend_Feed_Reader::findFeedLinks('http://www.iconsultants.eu/blog/');
+
+    if(isset($links->rdf)) {
+        echo $links->rdf, "\n"; // http://www.planet-php.org/rdf/
+    }
+    if(isset($links->rss)) {
+        echo $links->rss, "\n"; // http://www.planet-php.org/rss/
+    }
+    if(isset($links->atom)) {
+        echo $links->atom, "\n"; // http://www.planet-php.org/atom/
+    }
+
 }
 catch (Exception $e){
     var_dump($e);
