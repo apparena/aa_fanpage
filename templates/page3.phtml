@@ -1,6 +1,7 @@
 <?php
 include_once ( '../init.php' );
 require_once('../libs/Zend/Feed/Rss.php');
+require_once('../libs/Zend/Feed/Reader.php');
 try {
     $channel = new Zend_Feed_Rss( $aa['config']['rss_feed1_url']['value'] );
     $feedArray = Zend_Feed::findFeeds('http://www.iconsultants.eu/blog/');
