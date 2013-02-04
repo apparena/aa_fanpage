@@ -4,12 +4,29 @@ require_once('../libs/Zend/Feed/Rss.php');
 require_once('../libs/Zend/Feed/Atom.php');
 require_once('../libs/Zend/Feed/Reader.php');
 try {
-    $links = Zend_Feed_Reader::findFeedLinks( $aa['config']['rss_feed1_url']['value'] );
 
-    foreach ($links as $link) {
-        $feed = Zend_Feed_Reader::import( $link['uri'] );
+    $feed = Zend_Feed_Reader::import( $aa['config']['rss_feed1_url']['value'] );
+    $data = array(
+        'title'        => $feed->getTitle(),
+        'link'         => $feed->getLink(),
+        'dateModified' => $feed->getDateModified(),
+        'description'  => $feed->getDescription(),
+        'language'     => $feed->getLanguage(),
+        'entries'      => array(),
+    );
+
+    foreach ($feed as $entry) {
+        $edata = array(
+            'title'        => $entry->getTitle(),
+            'description'  => $entry->getDescription(),
+            'dateModified' => $entry->getDateModified(),
+            'author'       => $entry->getAuthor(),
+            'link'         => $entry->getLink(),
+            'content'      => $entry->getContent()
+        );
+        $data['entries'][] = $edata;
     }
-
+    var_dump($data);
 }
 catch (Exception $e){
     var_dump($e);
@@ -33,20 +50,13 @@ catch (Exception $e){
 
         <!-- RSS Feed Items -->
         <div class="span8">
-            <h3><?=$feed->getTitle();?></h3>
-            <h4>Anzahl Elemente: <?=$feed->count();?></h4>
+            <h3><?=$data['title'];?></h3>
             <?php
-            foreach ( $feed as $item ) { ?>
+            foreach ( $data['entries'] as $item ) { ?>
                 <div class="item">
                     <div class="thumbnail pull-left">
                         <?php
-                        echo $item->getTitle() . "<br>";
-                        echo $item->getLink() . "<br>";
-                        echo $item->getDescription() . "<br>";
-                        echo $item->getAuthor() . "<br>";
-                        echo $item->getCategory() . "<br>";
-                        echo $item->getComments() . "<br>";
-                        echo $item->getPubDate() . "<br>";
+                        echo $item['title'] . "<br>";
                         ?>
                     </div>
                 </div>
