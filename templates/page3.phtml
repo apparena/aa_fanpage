@@ -28,7 +28,13 @@ catch (Exception $e){
         <div class="span8">
             <?php
             foreach ($channel as $item) {
-                var_dump($item);
+                echo $item->getTitle() . "<br>";
+                echo $item->getLink() . "<br>";
+                echo $item->getDescription() . "<br>";
+                echo $item->getAuthor() . "<br>";
+                echo $item->getCategory() . "<br>";
+                echo $item->getComments() . "<br>";
+                echo $item->getPubDate() . "<br>";
             }
             ?>
             <div class="item">
