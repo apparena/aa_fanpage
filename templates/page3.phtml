@@ -1,17 +1,21 @@
 <?php
 include_once ( '../init.php' );
+require_once('../libs/Zend/Feed/Rss.php');
+require_once('../libs/Zend/Feed/Atom.php');
 require_once('../libs/Zend/Feed/Reader.php');
 try {
     $links = Zend_Feed_Reader::findFeedLinks( $aa['config']['rss_feed1_url']['value'] );
 
-    if(isset($links->rdf)) {
-        echo $links->rdf, "\n"; // http://www.planet-php.org/rdf/
-    }
+    /*if(isset($links->rdf)) {
+        echo $links->rdf, "\n";
+    }*/
     if(isset($links->rss)) {
         $channel = new Zend_Feed_Rss( $links->rss );
+        echo "Rss: " . $links->atom, "\n";
     }
     if(isset($links->atom)) {
-        echo $links->atom, "\n"; // http://www.planet-php.org/atom/
+        $channel = new Zend_Feed_Atom( $links->atom );
+        echo "Atom: " . $links->atom, "\n";
     }
 
 }
