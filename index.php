@@ -120,7 +120,7 @@ include_once("init.php");
         <div class="container-fluid">
             <nav>
                 <ul class="nav">
-                    <li><a onclick="aa_tmpl_load('page1.phtml');"><?=$aa['config']['page1_caption']['value']?></a></li>
+                    <li><a onclick="aa_tmpl_load('index.phtml');"><?=$aa['config']['page1_caption']['value']?></a></li>
                     <?php if ( $aa['config']['page2_activated']['value'] ) { ?>
                         <li><a onclick="aa_tmpl_load('page2.phtml');"><?=$aa['config']['page2_caption']['value']?></a></li>
                     <?php } if ( $aa['config']['page3_activated']['value'] ) { ?>
