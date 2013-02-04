@@ -54,10 +54,13 @@ catch (Exception $e){
             foreach ( $data['entries'] as $item ) { ?>
                 <div class="item">
                     <div class="thumbnail pull-left">
-                        <?php
-                        echo $item['title'] . "<br>";
-                        ?>
+
                     </div>
+                    <div class="title">
+                        <h4><a href="<?=$item['link']; ?>" target="_blank"><?=$item['title']; ?></a></h4>
+                    </div>
+                    <div class="description"><?php echo $item['description']; ?></div>
+
                 </div>
             <?php } ?>
 
