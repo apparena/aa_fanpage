@@ -27,7 +27,12 @@
             <?php } ?>
             <script>
                 Galleria.loadTheme('js/libs/galleria/themes/classic/galleria.classic.min.js');
-                Galleria.run('#galleria');
+                // See all options to run the gallery on http://galleria.io/docs/options/
+                Galleria.run('#galleria', {
+                    autoplay: 7000, // will move forward every 7 seconds
+                    transition: 'fade',
+                    imageCrop: true
+                });
             </script>
 
             <div class="content">
