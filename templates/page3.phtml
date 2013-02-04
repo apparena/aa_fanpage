@@ -63,7 +63,7 @@ catch (Exception $e){
                         <?php
                         $pos=strpos($item['description'], ' ', 200);
                         echo substr($item['description'], 0, $pos ) . " ...";
-                        ?>
+                        ?><br />
                         <a href="<?=$item['link']; ?>" target="_blank"><?php __p("read_more"); ?></a>
                     </div>
 
