@@ -1,0 +1,39 @@
+<?php
+include_once ( '../init.php' );
+require_once('../libs/Zend/Feed/Rss.php');
+$channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
+?>
+<!-- Social News Page -->
+<div class="page2">
+    <div class="row">
+        <div class="span2">
+            <div class="logo">
+                <?=$aa['config']['header_logo']['value'];?>
+            </div>
+
+            <?php if ( $aa['config']['header_sm_activated']['value'] ) {
+            include_once("menu_social_media.phtml");
+        }  ?>
+
+            <?php include_once("menu_left.phtml"); ?>
+        </div>
+
+        <!-- RSS Feed Items -->
+        <div class="span8">
+            <?php
+            foreach ($channel as $item) {
+                var_dump($item);
+            }
+            ?>
+            <div class="item">
+                <div class="thumbnail pull-left">
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div> <!-- End welcome div live -->
