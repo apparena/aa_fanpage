@@ -3,6 +3,7 @@ include_once ( '../init.php' );
 require_once('../libs/Zend/Feed/Rss.php');
 try {
     $channel = new Zend_Feed_Rss( $aa['config']['rss_feed1_url']['value'] );
+    $feedArray = Zend_Feed::findFeeds('http://www.iconsultants.eu/blog/');
 }
 catch (Exception $e){
     var_dump($e);
@@ -27,6 +28,10 @@ catch (Exception $e){
         <!-- RSS Feed Items -->
         <div class="span8">
             <h3><?=$channel->title();?></h3>
+            <p>
+                Feeds:
+                <?php var_dump($feedArray); ?>
+            </p>
             <?php
             foreach ( $channel as $item ) { ?>
                 <div class="item">
