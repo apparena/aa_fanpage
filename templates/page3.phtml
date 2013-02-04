@@ -1,6 +1,7 @@
 <?php
 include_once ( '../init.php' );
-require_once('../libs/Zend/Feed/');
+require_once('../libs/Zend/Feed/Rss.php');
+require_once('../libs/Zend/Feed/Abstract.php');
 $channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
 ?>
 <!-- Social News Page -->
