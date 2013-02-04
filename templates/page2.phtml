@@ -9,28 +9,9 @@ include_once ( '../init.php' );
                 <?=$aa['config']['header_logo']['value'];?>
             </div>
 
-            <?php if ( $aa['config']['header_sm_activated']['value'] ) { ?>
-            <div class="social-media-links">
-                <a href="<?=$aa['instance']['fb_page_url'];?>">
-                    <img src="img/icons/facebook-variation.png" alt="Facebook" />
-                </a>
-                <?php if ( $aa['config']['header_sm_twitter']['value'] != "" ) { ?>
-                <a href="<?=$aa['config']['header_sm_twitter']['value'];?>">
-                    <img src="img/icons/twitter-variation.png" alt="Twitter" />
-                </a>
-                <?php }  ?>
-                <?php if ( $aa['config']['header_sm_youtube']['value'] != "" ) { ?>
-                <a href="<?=$aa['config']['header_sm_youtube']['value'];?>">
-                    <img src="img/icons/youtube-variation.png" alt="Youtube" />
-                </a>
-                <?php }  ?>
-                <?php if ( $aa['config']['header_sm_xing']['value'] != "" ) { ?>
-                <a href="<?=$aa['config']['header_sm_xing']['value'];?>">
-                    <img src="img/icons/xing-variation.png" alt="Youtube" />
-                </a>
-                <?php }  ?>
-            </div>
-            <?php }  ?>
+            <?php if ( $aa['config']['header_sm_activated']['value'] ) {
+                include_once("menu_social_media.phtml");
+            }  ?>
 
             <?php include_once("menu_left.phtml"); ?>
         </div>
@@ -39,14 +20,54 @@ include_once ( '../init.php' );
                 <?=$aa['config']['page2_content']['value'];?>
             </div>
 
-            <div class="row member">
-                <div class="span3 picture">
-                    <img src="<?=$aa['config']['team_member1']['value'];?>" >
+            <?php if ( $aa['config']['team_member1_activated']['value'] ) { ?>
+                <div class="row member member1">
+                    <div class="span3 picture">
+                        <div class="thumbnail">
+                            <img src="<?=$aa['config']['team_member1']['value'];?>" >
+                        </div>
+                    </div>
+                    <div class="span5 description">
+                        <?=$aa['config']['team_member1_desc']['value'];?>
+                    </div>
                 </div>
-                <div class="span5 description">
-                    <?=$aa['config']['team_member1_desc']['value'];?>
+            <?php }  ?>
+            <?php if ( $aa['config']['team_member2_activated']['value'] ) { ?>
+                <div class="row member member2">
+                    <div class="span5 description">
+                        <?=$aa['config']['team_member2_desc']['value'];?>
+                    </div>
+                    <div class="span3 picture">
+                        <div class="thumbnail">
+                            <img src="<?=$aa['config']['team_member2']['value'];?>" >
+                        </div>
+                    </div>
                 </div>
-            </div>
+            <?php }  ?>
+            <?php if ( $aa['config']['team_member3_activated']['value'] ) { ?>
+                <div class="row member member3">
+                    <div class="span3 picture">
+                        <div class="thumbnail">
+                            <img src="<?=$aa['config']['team_member3']['value'];?>" >
+                        </div>
+                    </div>
+                    <div class="span5 description">
+                        <?=$aa['config']['team_member3_desc']['value'];?>
+                    </div>
+                </div>
+            <?php }  ?>
+            <?php if ( $aa['config']['team_member4_activated']['value'] ) { ?>
+                <div class="row member member4">
+                    <div class="span5 description">
+                        <?=$aa['config']['team_member4_desc']['value'];?>
+                    </div>
+                    <div class="span3 picture">
+                        <div class="thumbnail">
+                            <img src="<?=$aa['config']['team_member4']['value'];?>" >
+                        </div>
+                    </div>
+                </div>
+            <?php }  ?>
         </div>
     </div>
 </div> <!-- End welcome div live -->

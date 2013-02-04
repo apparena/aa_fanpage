@@ -1,0 +1,20 @@
+<div class="social-media-links">
+    <a href="<?=$aa['instance']['fb_page_url'];?>" target="_blank">
+        <img src="img/icons/facebook-variation.png" alt="Facebook" />
+    </a>
+    <?php if ( $aa['config']['header_sm_twitter']['value'] != "" ) { ?>
+    <a href="<?=$aa['config']['header_sm_twitter']['value'];?>" target="_blank">
+        <img src="img/icons/twitter-variation.png" alt="Twitter" />
+    </a>
+    <?php }  ?>
+    <?php if ( $aa['config']['header_sm_youtube']['value'] != "" ) { ?>
+    <a href="<?=$aa['config']['header_sm_youtube']['value'];?>" target="_blank">
+        <img src="img/icons/youtube-variation.png" alt="Youtube" />
+    </a>
+    <?php }  ?>
+    <?php if ( $aa['config']['header_sm_xing']['value'] != "" ) { ?>
+    <a href="<?=$aa['config']['header_sm_xing']['value'];?>" target="_blank">
+        <img src="img/icons/xing-variation.png" alt="Youtube" />
+    </a>
+    <?php }  ?>
+</div>

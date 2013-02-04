@@ -8,28 +8,9 @@
                 <?=$aa['config']['header_logo']['value'];?>
 			</div>
 
-            <?php if ( $aa['config']['header_sm_activated']['value'] ) { ?>
-            <div class="social-media-links">
-                <a href="<?=$aa['instance']['fb_page_url'];?>">
-                    <img src="img/icons/facebook-variation.png" alt="Facebook" />
-                </a>
-                <?php if ( $aa['config']['header_sm_twitter']['value'] != "" ) { ?>
-                    <a href="<?=$aa['config']['header_sm_twitter']['value'];?>">
-                        <img src="img/icons/twitter-variation.png" alt="Twitter" />
-                    </a>
-                <?php }  ?>
-                <?php if ( $aa['config']['header_sm_youtube']['value'] != "" ) { ?>
-                <a href="<?=$aa['config']['header_sm_youtube']['value'];?>">
-                    <img src="img/icons/youtube-variation.png" alt="Youtube" />
-                </a>
-                <?php }  ?>
-                <?php if ( $aa['config']['header_sm_xing']['value'] != "" ) { ?>
-                <a href="<?=$aa['config']['header_sm_xing']['value'];?>">
-                    <img src="img/icons/xing-variation.png" alt="Youtube" />
-                </a>
-                <?php }  ?>
-            </div>
-            <?php }  ?>
+            <?php if ( $aa['config']['header_sm_activated']['value'] ) {
+                include_once("menu_social_media.phtml");
+            }  ?>
 
             <?php include_once("menu_left.phtml"); ?>
 		</div>
