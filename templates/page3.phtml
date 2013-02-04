@@ -1,7 +1,13 @@
 <?php
 include_once ( '../init.php' );
 require_once('../libs/Zend/Feed/Rss.php');
-$channel = new Zend_Feed_Rss('http://rss.example.com/channelName');
+try {
+    $channel = new Zend_Feed_Rss( $aa['config']['rss_feed1_url']['value'] );
+}
+catch (Exception $e){
+    var_dump($e);
+}
+
 ?>
 <!-- Social News Page -->
 <div class="page2">
