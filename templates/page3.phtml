@@ -26,6 +26,7 @@ catch (Exception $e){
 
         <!-- RSS Feed Items -->
         <div class="span8">
+            <h3><?=$channel->title();?></h3>
             <?php
             foreach ($channel as $item) {
                 echo $item->getTitle() . "<br>";
