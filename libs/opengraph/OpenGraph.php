@@ -183,7 +183,6 @@ class OpenGraph implements Iterator
 	public function valid() { return $this->_position < sizeof($this->_values); }
 }
 
-<?php
    /**
     * regexp helper ,for easy use regexp
     */
