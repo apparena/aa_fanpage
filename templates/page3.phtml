@@ -3,9 +3,11 @@ include_once ( '../init.php' );
 require_once('../libs/Zend/Feed/Rss.php');
 require_once('../libs/Zend/Feed/Atom.php');
 require_once('../libs/Zend/Feed/Reader.php');
+require_once('../libs/opengraph/OpenGraph.php');
 try {
 
     $feed = Zend_Feed_Reader::import( $aa['config']['rss_feed1_url']['value'] );
+
     $data = array(
         'title'        => $feed->getTitle(),
         'link'         => $feed->getLink(),
@@ -14,7 +16,6 @@ try {
         'language'     => $feed->getLanguage(),
         'entries'      => array(),
     );
-
     foreach ($feed as $entry) {
         $edata = array(
             'title'        => $entry->getTitle(),
@@ -49,9 +50,16 @@ catch (Exception $e){
 
         <!-- RSS Feed Items -->
         <div class="span8">
-            <h3><?=$data['title'];?></h3>
             <?php
-            foreach ( $data['entries'] as $item ) { ?>
+            foreach ( $data['entries'] as $item ) {
+                $graph = OpenGraph::fetch( $item['link'] );
+                var_dump($graph->keys());
+                var_dump($graph->schema);
+
+                foreach ($graph as $key => $value) {
+                    echo "$key => $value";
+                }
+                ?>
                 <div class="item">
                     <div class="thumbnail pull-left">
 
@@ -66,7 +74,6 @@ catch (Exception $e){
                         ?><br />
                         <a href="<?=$item['link']; ?>" target="_blank"><?php __p("read_more"); ?></a>
                     </div>
-
                 </div>
             <?php } ?>
         </div>
