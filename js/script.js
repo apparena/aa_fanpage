@@ -14,16 +14,23 @@ function aa_tmpl_load( tmpl_filename, params ) {
 
     /* Extract and parse paramters */
     /* Check data param */
-    if ( typeof( params['data'] ) == 'undefined' ) {
-        data = '';
+    if ( typeof( params['data'] ) != 'undefined' ) {
+        if ( data in params ) {
+            data = '&' + params['data'];
+        } else {
+            data = '';
+        }
+        /* Loading target parameter */
+        if ( !(target in params) ) {
+            target = '#main';
+        }
+        /* Get effect if not possible */
+        if ( !(effect in params) ) {
+            effect = 'slidedown';
+        }
     } else {
-        data = '&' + params['data'];
-    }
-    /* Loading target parameter */
-    if ( typeof( params['target'] ) == 'undefined' ) {
+        data = '';
         target = '#main';
-    }
-    if ( typeof( params['effect'] ) == 'undefined' ) {
         effect = 'slidedown';
     }
 
