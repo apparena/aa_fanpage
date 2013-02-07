@@ -160,7 +160,7 @@ include_once("init.php");
         </div>
 
         <?php if ( $aa['config']['header_sm_activated']['value'] ) {
-        include_once("menu_social_media.phtml");
+        include_once("templates/menu_social_media.phtml");
     }  ?>
 
         <?php include_once("menu_left.phtml"); ?>
