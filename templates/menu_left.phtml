@@ -1,11 +1,16 @@
 <div class="left-nav">
     <ul class="nav nav-tabs nav-stacked">
-        <li><a onclick="aa_tmpl_load('index.phtml');"><?=$aa['config']['page1_caption']['value']?></a></li>
+        <li>
+            <a onclick="aa_tmpl_load('index.phtml', {target:'#content',effect:'fade'});">
+                <?=$aa['config']['page1_caption']['value']?>
+            </a>
+        </li>
         <?php if ( $aa['config']['page2_activated']['value'] ) { ?>
         <li>
             <a onclick="aa_tmpl_load('page2.phtml', {target:'#content',effect:'fade'});">
                 <?=$aa['config']['page2_caption']['value']?>
-            </a></li>
+            </a>
+        </li>
         <?php } if ( $aa['config']['page3_activated']['value'] ) { ?>
         <li><a onclick="aa_tmpl_load('page3.phtml', {target:'#content',effect:'fade'});"><?=$aa['config']['page3_caption']['value']?></a></li>
         <?php } if ( $aa['config']['page4_activated']['value'] ) { ?>
