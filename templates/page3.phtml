@@ -32,6 +32,11 @@ catch (Exception $e){
     var_dump($e);
 }
 
+
+$pages = explode( ",", $aa['config']['slider_pages']['value'] );
+if ( in_array("2",$pages ) ){
+    include_once('slider.phtml');
+}
 ?>
 <!-- Social News Page -->
 <div class="content">
