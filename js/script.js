@@ -32,6 +32,14 @@ function aa_tmpl_load( tmpl_filename, data, target, effect ) {
                 });
             });
         });
+    } else if ( effect == 'fade' ) {
+        $(target).fadeOut(0, function () {
+            $(target).load( url, function () {
+                $(target).fadeIn(600, function () {
+                    FB.Canvas.scrollTo(0, 0);
+                });
+            });
+        });
     }
 }
 
