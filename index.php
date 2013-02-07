@@ -229,13 +229,16 @@ if (isset($aaForJs['inst']['aa_app_secret'])) {
 
 // Get Landingpage from Url
 $landingpage = "index.phtml";
-var_dump($fb_signed_request['app_data']);
-if ( isset( $fb_signed_request['app_data']['landingpage'] ) ){
-    $landingpage = $fb_signed_request['app_data']['landingpage'];
+if ( isset( $fb_signed_request['app_data'] ) ){
+    $app_data = json_decode($json, true);
+    if ( isset( $app_data['landingpage'] ) ){
+        $landingpage = $app_data['landingpage'];
+    }
 }
 if ( isset( $_GET['landingpage'] ) ){
     $landingpage = $_GET['landingpage'];
 }
+
 ?>
 
 <script>
