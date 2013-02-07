@@ -230,7 +230,7 @@ if (isset($aaForJs['inst']['aa_app_secret'])) {
 // Get Landingpage from Url
 $landingpage = "index.phtml";
 if ( isset( $fb_signed_request['app_data'] ) ){
-    $app_data = json_decode($json, true);
+    $app_data = json_decode($fb_signed_request['app_data'], true);
     if ( isset( $app_data['landingpage'] ) ){
         $landingpage = $app_data['landingpage'];
     }
