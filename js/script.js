@@ -5,23 +5,34 @@
 /**
  * Loads a new template file into the div#main container using jquery animations
  * @param tmpl_filename Filename of the template
+ * @param data GET-Parameters which will be loaded as well.
+ * @param target css-selector to load the template in
+ * @param effect transition effect: can be slide, fade or loading
  */
-function aa_tmpl_load(tmpl_filename, data) {
-    show_loading(); // show the loading screen
+function aa_tmpl_load( tmpl_filename, data, target, effect ) {
     if ( typeof( data ) == 'undefined' ) {
     	data = '';
     } else {
     	data = '&' + data;
     }
+    if ( typeof( target ) == 'undefined' ) {
+        target = '#main';
+    }
+    if ( typeof( effect ) == 'undefined' ) {
+        effect = 'slidedown';
+    }
     var url = "templates/" + tmpl_filename + "?aa_inst_id=" + aa.inst.aa_inst_id + data;
-    $("#main").slideUp(0, function () {
-        $("#main").load( url, function () {
-            $("#main").slideDown(600, function () {
-                FB.Canvas.scrollTo(0, 0);
-                hide_loading(); // hide the loading screen
+    if ( effect == 'slidedown' ) {
+        show_loading(); // show the loading screen
+        $(target).slideUp(0, function () {
+            $(target).load( url, function () {
+                $(target).slideDown(600, function () {
+                    FB.Canvas.scrollTo(0, 0);
+                    hide_loading(); // hide the loading screen
+                });
             });
         });
-    });
+    }
 }
 
 function open_popup( url, name ) {
