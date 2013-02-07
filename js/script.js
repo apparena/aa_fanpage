@@ -13,20 +13,18 @@
 function aa_tmpl_load( tmpl_filename, params ) {
 
     /* Extract and parse paramters */
-    if ( typeof( params ) != 'undefined' ) {
-        /* Check data param */
-        if ( typeof( params['data'] ) == 'undefined' ) {
-            data = '';
-        } else {
-            data = '&' + params['data'];
-        }
-        /* Loading target parameter */
-        if ( typeof( params['target'] ) == 'undefined' ) {
-            target = '#main';
-        }
-        if ( typeof( params['effect'] ) == 'undefined' ) {
-            effect = 'slidedown';
-        }
+    /* Check data param */
+    if ( typeof( params['data'] ) == 'undefined' ) {
+        data = '';
+    } else {
+        data = '&' + params['data'];
+    }
+    /* Loading target parameter */
+    if ( typeof( params['target'] ) == 'undefined' ) {
+        target = '#main';
+    }
+    if ( typeof( params['effect'] ) == 'undefined' ) {
+        effect = 'slidedown';
     }
 
     var url = "templates/" + tmpl_filename + "?aa_inst_id=" + aa.inst.aa_inst_id + data;
