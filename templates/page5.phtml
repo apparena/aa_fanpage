@@ -1,26 +1,8 @@
 <?php
 include_once ( '../init.php' );
 ?>
-<!-- Social News Page -->
-<div class="page2">
-    <div class="row">
-        <div class="span2">
-            <div class="logo">
-                <?=$aa['config']['header_logo']['value'];?>
-            </div>
-
-            <?php if ( $aa['config']['header_sm_activated']['value'] ) {
-            include_once("menu_social_media.phtml");
-        }  ?>
-
-            <?php include_once("menu_left.phtml"); ?>
-        </div>
-
-        <!-- RSS Feed Items -->
-        <div class="span8">
-            <div class="content">
-                <?=$aa['config']['page5_content']['value'];?>
-            </div>
-        </div>
+<div class="span8">
+    <div class="content">
+        <?=$aa['config']['page5_content']['value'];?>
     </div>
-</div> <!-- End welcome div live -->
+</div>
