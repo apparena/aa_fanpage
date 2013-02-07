@@ -1,6 +1,8 @@
 <?php
 include_once ( '../init.php' );
 
+// Contact form tab
+
 $pages = explode( ",", $aa['config']['slider_pages']['value'] );
 if ( in_array("6",$pages ) ){
     include_once('slider.phtml');

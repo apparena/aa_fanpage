@@ -174,12 +174,16 @@ $menu = explode(",", $aa['config']['menu_order']['value']);
     </div>
 </div>
 
+<div class="social-plugins">
+    <div class="fb-comments" data-href="<?=$aa['fb']['share_url'];?>" data-width="620" data-num-posts="10"></div>
+</div>
+
 <div class="custom-footer">
     <?php  echo $aa['config']['footer_custom']['value'];  ?>
 </div>
 
 <footer>
-    <?php if ($aa['config']['tac_activated']['value'] == 'apparena') { ?>
+    <?php if ( $aa['config']['tac_activated']['value'] ) { ?>
     <div class="tac-container">
         <?php
         $terms_and_conditions_link = "<a class='clickable' id='terms-link'>" . __t("terms_and_conditions") . "</a>";
