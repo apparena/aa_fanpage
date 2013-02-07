@@ -1,6 +1,12 @@
 <?php
 include_once ( '../init.php' );
+
+$pages = explode( ",", $aa['config']['slider_pages']['value'] );
+if ( in_array("2",$pages ) ){
+    include_once('slider.phtml');
+}
 ?>
+
 <div class="content">
     <?=$aa['config']['page2_content']['value'];?>
 </div>
