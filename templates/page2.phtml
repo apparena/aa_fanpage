@@ -1,57 +1,59 @@
+<?php
+include_once ( '../init.php' );
+?>
+<div class="content">
+    <?=$aa['config']['page2_content']['value'];?>
+</div>
 
-            <div class="content">
-                <?=$aa['config']['page2_content']['value'];?>
+<?php if ( $aa['config']['team_member1_activated']['value'] ) { ?>
+    <hr />
+    <div class="row member member1">
+        <div class="span3 picture">
+            <div class="thumbnail">
+                <img src="<?=$aa['config']['team_member1']['value'];?>" >
             </div>
-
-            <?php if ( $aa['config']['team_member1_activated']['value'] ) { ?>
-                <hr />
-                <div class="row member member1">
-                    <div class="span3 picture">
-                        <div class="thumbnail">
-                            <img src="<?=$aa['config']['team_member1']['value'];?>" >
-                        </div>
-                    </div>
-                    <div class="span5 description">
-                        <?=$aa['config']['team_member1_desc']['value'];?>
-                    </div>
-                </div>
-            <?php }  ?>
-            <?php if ( $aa['config']['team_member2_activated']['value'] ) { ?>
-                <hr />
-                <div class="row member member2">
-                    <div class="span5 description">
-                        <?=$aa['config']['team_member2_desc']['value'];?>
-                    </div>
-                    <div class="span3 picture">
-                        <div class="thumbnail">
-                            <img src="<?=$aa['config']['team_member2']['value'];?>" >
-                        </div>
-                    </div>
-                </div>
-            <?php }  ?>
-            <?php if ( $aa['config']['team_member3_activated']['value'] ) { ?>
-                <hr />
-                <div class="row member member3">
-                    <div class="span3 picture">
-                        <div class="thumbnail">
-                            <img src="<?=$aa['config']['team_member3']['value'];?>" >
-                        </div>
-                    </div>
-                    <div class="span5 description">
-                        <?=$aa['config']['team_member3_desc']['value'];?>
-                    </div>
-                </div>
-            <?php }  ?>
-            <?php if ( $aa['config']['team_member4_activated']['value'] ) { ?>
-                <hr />
-                <div class="row member member4">
-                    <div class="span5 description">
-                        <?=$aa['config']['team_member4_desc']['value'];?>
-                    </div>
-                    <div class="span3 picture">
-                        <div class="thumbnail">
-                            <img src="<?=$aa['config']['team_member4']['value'];?>" >
-                        </div>
-                    </div>
-                </div>
-            <?php }  ?>
+        </div>
+        <div class="span5 description">
+            <?=$aa['config']['team_member1_desc']['value'];?>
+        </div>
+    </div>
+<?php }  ?>
+<?php if ( $aa['config']['team_member2_activated']['value'] ) { ?>
+    <hr />
+    <div class="row member member2">
+        <div class="span5 description">
+            <?=$aa['config']['team_member2_desc']['value'];?>
+        </div>
+        <div class="span3 picture">
+            <div class="thumbnail">
+                <img src="<?=$aa['config']['team_member2']['value'];?>" >
+            </div>
+        </div>
+    </div>
+<?php }  ?>
+<?php if ( $aa['config']['team_member3_activated']['value'] ) { ?>
+    <hr />
+    <div class="row member member3">
+        <div class="span3 picture">
+            <div class="thumbnail">
+                <img src="<?=$aa['config']['team_member3']['value'];?>" >
+            </div>
+        </div>
+        <div class="span5 description">
+            <?=$aa['config']['team_member3_desc']['value'];?>
+        </div>
+    </div>
+<?php }  ?>
+<?php if ( $aa['config']['team_member4_activated']['value'] ) { ?>
+    <hr />
+    <div class="row member member4">
+        <div class="span5 description">
+            <?=$aa['config']['team_member4_desc']['value'];?>
+        </div>
+        <div class="span3 picture">
+            <div class="thumbnail">
+                <img src="<?=$aa['config']['team_member4']['value'];?>" >
+            </div>
+        </div>
+    </div>
+<?php }  ?>
