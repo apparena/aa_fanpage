@@ -14,7 +14,7 @@ function aa_tmpl_load( tmpl_filename, params ) {
 
     /* Extract and parse paramters */
     /* Check data param */
-    if ( typeof( params['data'] ) != 'undefined' ) {
+    if ( typeof( params ) != 'undefined' ) {
         if ( data in params ) {
             data = '&' + params['data'];
         } else {
