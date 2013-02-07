@@ -1,6 +1,5 @@
 <?php
 $menu = explode(",", $aa['config']['menu_order']['value']);
-var_dump($menu);
 ?>
 
 <div class="left-nav">
@@ -8,8 +7,7 @@ var_dump($menu);
         <?php
         // Generate menu
         foreach ( $menu as $item ) {
-            var_dump($item);
-            if ( $item = "1" ) {
+            if ( $item == "1" ) {
                 $template = "index.phtml";
                 $showItem = true;
             } else {
@@ -20,13 +18,13 @@ var_dump($menu);
                     $showItem = false;
                 }
             }
-            /*if ( $showItem ) { ?>
+            if ( $showItem ) { ?>
                 <li>
                     <a onclick="aa_tmpl_load('<?=$template;?>', {target:'#main',effect:'fade'});">
-                        <?=$aa['config']['page' . $item . '_caption']['value']?> <?php var_dump($item); ?>
+                        <?=$aa['config']['page' . $item . '_caption']['value']?>
                     </a>
                 </li>
-        <?php }*/
+        <?php }
         } ?>
     </ul>
 </div>
