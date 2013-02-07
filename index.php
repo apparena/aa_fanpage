@@ -153,10 +153,22 @@ include_once("init.php");
     <?php  echo $aa['config']['header_custom']['value'];  ?>
 </div>
 
-<div id="main" class="container">
-    <!-- the main content is managed by initApp() -->
+<div class="row">
+    <div class="span2">
+        <div class="logo">
+            <?=$aa['config']['header_logo']['value'];?>
+        </div>
+
+        <?php if ( $aa['config']['header_sm_activated']['value'] ) {
+        include_once("menu_social_media.phtml");
+    }  ?>
+
+        <?php include_once("menu_left.phtml"); ?>
+    </div>
+    <div class="span8" id="main">
+        <!-- the main content is managed by initApp() -->
+    </div>
 </div>
-<!-- #main -->
 
 <div class="custom-footer">
     <?php  echo $aa['config']['footer_custom']['value'];  ?>

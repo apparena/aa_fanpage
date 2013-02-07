@@ -1,51 +1,10 @@
 <?php 
 	include_once ( '../init.php' );
 ?>
-<div class="page1">
-	<div class="row">
-		<div class="span2">
-			<div class="logo">
-                <?=$aa['config']['header_logo']['value'];?>
-			</div>
 
-            <?php if ( $aa['config']['header_sm_activated']['value'] ) {
-                include_once("menu_social_media.phtml");
-            }  ?>
+<?php include_once('slider.phtml'); ?>
 
-            <?php include_once("menu_left.phtml"); ?>
-		</div>
-        <div class="span8" id="content">
-            <!-- Header Slider -->
-            <?php if ( $aa['config']['slider_activated']['value'] ) { ?>
-                <div id="galleria">
-                    <img src="<?=$aa['config']['slider_slide1']['value'];?>" >
-                    <?php if ( $aa['config']['slider_slide_amount']['value'] > 1 ) { ?>
-                        <img src="<?=$aa['config']['slider_slide2']['value'];?>" >
-                    <?php } if ( $aa['config']['slider_slide_amount']['value'] > 2 ) { ?>
-                        <img src="<?=$aa['config']['slider_slide3']['value'];?>" >
-                    <?php } if ( $aa['config']['slider_slide_amount']['value'] > 3 ) { ?>
-                        <img src="<?=$aa['config']['slider_slide4']['value'];?>" >
-                    <?php } if ( $aa['config']['slider_slide_amount']['value'] > 4 ) { ?>
-                        <img src="<?=$aa['config']['slider_slide5']['value'];?>" >
-                    <?php } if ( $aa['config']['slider_slide_amount']['value'] > 5 ) { ?>
-                        <img src="<?=$aa['config']['slider_slide6']['value'];?>" >
-                    <?php }  ?>
-                </div>
-            <?php } ?>
-            <script>
-                Galleria.loadTheme('js/libs/galleria/themes/classic/galleria.classic.min.js');
-                // See all options to run the gallery on http://galleria.io/docs/options/
-                Galleria.run('#galleria', {
-                    autoplay: 7000, // will move forward every 7 seconds
-                    transition: 'fade',
-                    imageCrop: true
-                });
-            </script>
-
-            <div class="content">
-                <?=$aa['config']['page1_content']['value'];?>
-            </div>
-        </div>
-	</div>
-</div> <!-- End welcome div live -->
+<div class="content">
+    <?=$aa['config']['page1_content']['value'];?>
+</div>
 

@@ -1,0 +1,26 @@
+<!-- Header Slider -->
+<?php if ( $aa['config']['slider_activated']['value'] ) { ?>
+<div id="galleria">
+    <img src="<?=$aa['config']['slider_slide1']['value'];?>" >
+    <?php if ( $aa['config']['slider_slide_amount']['value'] > 1 ) { ?>
+    <img src="<?=$aa['config']['slider_slide2']['value'];?>" >
+    <?php } if ( $aa['config']['slider_slide_amount']['value'] > 2 ) { ?>
+    <img src="<?=$aa['config']['slider_slide3']['value'];?>" >
+    <?php } if ( $aa['config']['slider_slide_amount']['value'] > 3 ) { ?>
+    <img src="<?=$aa['config']['slider_slide4']['value'];?>" >
+    <?php } if ( $aa['config']['slider_slide_amount']['value'] > 4 ) { ?>
+    <img src="<?=$aa['config']['slider_slide5']['value'];?>" >
+    <?php } if ( $aa['config']['slider_slide_amount']['value'] > 5 ) { ?>
+    <img src="<?=$aa['config']['slider_slide6']['value'];?>" >
+    <?php }  ?>
+</div>
+<?php } ?>
+<script>
+    Galleria.loadTheme('js/libs/galleria/themes/classic/galleria.classic.min.js');
+    // See all options to run the gallery on http://galleria.io/docs/options/
+    Galleria.run('#galleria', {
+        autoplay: 7000, // will move forward every 7 seconds
+        transition: 'fade',
+        imageCrop: true
+    });
+</script>
