@@ -163,6 +163,11 @@ $menu = explode(",", $aa['config']['menu_order']['value']);
             <?=$aa['config']['header_logo']['value'];?>
         </div>
 
+        <div class="fb-like-button">
+            <div class="fb-like" data-href="<?=$aa['fb']['share_url'];?>" data-send="false" data-layout="button_count"
+                 data-width="140" data-show-faces="false"></div>
+        </div>
+
         <?php if ( $aa['config']['header_sm_activated']['value'] ) {
         include_once("templates/menu_social_media.phtml");
     }  ?>
@@ -176,6 +181,7 @@ $menu = explode(",", $aa['config']['menu_order']['value']);
 
 <div class="social-plugins row">
     <div class="offset2 span8">
+        <h3><?php __p('leave_a_comment'); ?></h3>
         <div class="fb-comments" data-href="<?=$aa['fb']['share_url'];?>" data-width="620" data-num-posts="10"></div>
     </div>
 </div>
