@@ -26,7 +26,7 @@ function aa_tmpl_load( tmpl_filename, data, target, effect ) {
         $(target).fadeOut(0, function () {
             $(target).load( url, function () {
                 $(target).fadeIn(600, function () {
-                    FB.Canvas.scrollTo(0, 0);
+                    //FB.Canvas.scrollTo(0, 0);
                 });
             });
         });
