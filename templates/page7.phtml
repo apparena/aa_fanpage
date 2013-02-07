@@ -6,6 +6,10 @@ if ( in_array("7",$pages ) ){
     include_once('slider.phtml');
 }
 ?>
+<script>
+    $('.nav-item').removeClass('active');
+    $('.nav-item-7').addClass('active');
+</script>
 <div class="content">
     <?=$aa['config']['page7_content']['value'];?>
 </div>

@@ -38,6 +38,11 @@ if ( in_array("3",$pages ) ){
     include_once('slider.phtml');
 }
 ?>
+<script>
+    $('.nav-item').removeClass('active');
+    $('.nav-item-3').addClass('active');
+</script>
+
 <!-- Social News Page -->
 <div class="content">
     <?=$aa['config']['page3_content']['value'];?>
