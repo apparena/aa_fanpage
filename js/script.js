@@ -5,22 +5,30 @@
 /**
  * Loads a new template file into the div#main container using jquery animations
  * @param tmpl_filename Filename of the template
- * @param data GET-Parameters which will be loaded as well.
- * @param target css-selector to load the template in
- * @param effect transition effect: can be slide, fade or switch
+ * @param params Additional parameters to control the loading function (data, target, effect)
+ *          data GET-Parameters which will be loaded as well.
+ *          target css-selector to load the template in
+ *          effect transition effect: can be slide, fade or switch
  */
-function aa_tmpl_load( tmpl_filename, data, target, effect ) {
-    if ( typeof( data ) == 'undefined' ) {
-    	data = '';
-    } else {
-    	data = '&' + data;
+function aa_tmpl_load( tmpl_filename, params ) {
+
+    /* Extract and parse paramters */
+    if ( typeof( params ) != 'undefined' ) {
+        /* Check data param */
+        if ( typeof( params['data'] ) == 'undefined' ) {
+            data = '';
+        } else {
+            data = '&' + params['data'];
+        }
+        /* Loading target parameter */
+        if ( typeof( params['target'] ) == 'undefined' ) {
+            target = '#main';
+        }
+        if ( typeof( params['effect'] ) == 'undefined' ) {
+            effect = 'slidedown';
+        }
     }
-    if ( typeof( target ) == 'undefined' ) {
-        target = '#main';
-    }
-    if ( typeof( effect ) == 'undefined' ) {
-        effect = 'slidedown';
-    }
+
     var url = "templates/" + tmpl_filename + "?aa_inst_id=" + aa.inst.aa_inst_id + data;
     if ( effect == 'fade' ) {
         $(target).fadeOut(0, function () {
