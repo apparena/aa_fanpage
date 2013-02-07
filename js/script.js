@@ -15,18 +15,22 @@ function aa_tmpl_load( tmpl_filename, params ) {
     /* Extract and parse paramters */
     /* Check data param */
     if ( typeof( params ) != 'undefined' ) {
-        if ( data in params ) {
-            data = '&' + params['data'];
-        } else {
+        if ( !params.hasOwnProperty('data') ) {
             data = '';
+        } else {
+            data = '&' + params['data'];
         }
         /* Loading target parameter */
-        if ( !(target in params) ) {
+        if ( !params.hasOwnProperty('target') ) {
             target = '#main';
+        }else {
+            target = params['target'];
         }
         /* Get effect if not possible */
-        if ( !(effect in params) ) {
+        if ( !params.hasOwnProperty('effect') ) {
             effect = 'slidedown';
+        }else {
+            effect = params['effect'];
         }
     } else {
         data = '';
