@@ -120,25 +120,25 @@ include_once("init.php");
         <div class="container-fluid">
             <nav>
                 <ul class="nav">
-                    <li><a onclick="aa_tmpl_load('index.phtml');"><?=$aa['config']['page1_caption']['value']?></a></li>
+                    <li><a onclick="aa_tmpl_load('index.phtml', {target:'#main',effect:'fade'});"><?=$aa['config']['page1_caption']['value']?></a></li>
                     <?php if ( $aa['config']['page2_activated']['value'] ) { ?>
-                        <li><a onclick="aa_tmpl_load('page2.phtml');"><?=$aa['config']['page2_caption']['value']?></a></li>
+                        <li><a onclick="aa_tmpl_load('page2.phtml, {target:'#main',effect:'fade'}');"><?=$aa['config']['page2_caption']['value']?></a></li>
                     <?php } if ( $aa['config']['page3_activated']['value'] ) { ?>
-                        <li><a onclick="aa_tmpl_load('page3.phtml');"><?=$aa['config']['page3_caption']['value']?></a></li>
+                        <li><a onclick="aa_tmpl_load('page3.phtml, {target:'#main',effect:'fade'}');"><?=$aa['config']['page3_caption']['value']?></a></li>
                     <?php } if ( $aa['config']['page4_activated']['value'] ) { ?>
-                        <li><a onclick="aa_tmpl_load('page4.phtml');"><?=$aa['config']['page4_caption']['value']?></a></li>
+                        <li><a onclick="aa_tmpl_load('page4.phtml, {target:'#main',effect:'fade'}');"><?=$aa['config']['page4_caption']['value']?></a></li>
                     <?php } if ( $aa['config']['page5_activated']['value'] ) { ?>
-                        <li><a onclick="aa_tmpl_load('page5.phtml');"><?=$aa['config']['page5_caption']['value']?></a></li>
+                        <li><a onclick="aa_tmpl_load('page5.phtml, {target:'#main',effect:'fade'}');"><?=$aa['config']['page5_caption']['value']?></a></li>
                     <?php } if ( $aa['config']['page6_activated']['value'] ) { ?>
-                        <li><a onclick="aa_tmpl_load('page6.phtml');"><?=$aa['config']['page6_caption']['value']?></a></li>
+                        <li><a onclick="aa_tmpl_load('page6.phtml, {target:'#main',effect:'fade'}');"><?=$aa['config']['page6_caption']['value']?></a></li>
                     <?php } if ( $aa['config']['page7_activated']['value'] ) { ?>
-                        <li><a onclick="aa_tmpl_load('page7.phtml');"><?=$aa['config']['page7_caption']['value']?></a></li>
+                        <li><a onclick="aa_tmpl_load('page7.phtml, {target:'#main',effect:'fade'}');"><?=$aa['config']['page7_caption']['value']?></a></li>
                     <?php } if ( $aa['config']['page8_activated']['value'] ) { ?>
-                        <li><a onclick="aa_tmpl_load('page8.phtml');"><?=$aa['config']['page8_caption']['value']?></a></li>
+                        <li><a onclick="aa_tmpl_load('page8.phtml, {target:'#main',effect:'fade'}');"><?=$aa['config']['page8_caption']['value']?></a></li>
                     <?php } if ( $aa['config']['page9_activated']['value'] ) { ?>
-                        <li><a onclick="aa_tmpl_load('page9.phtml');"><?=$aa['config']['page9_caption']['value']?></a></li>
+                        <li><a onclick="aa_tmpl_load('page9.phtml, {target:'#main',effect:'fade'}');"><?=$aa['config']['page9_caption']['value']?></a></li>
                     <?php } if ( $aa['config']['page10_activated']['value'] ) { ?>
-                        <li><a onclick="aa_tmpl_load('page10.phtml');"><?=$aa['config']['page10_caption']['value']?></a></li>
+                        <li><a onclick="aa_tmpl_load('page10.phtml, {target:'#main',effect:'fade'}');"><?=$aa['config']['page10_caption']['value']?></a></li>
                     <?php } ?>
                 </ul>
             </nav>
