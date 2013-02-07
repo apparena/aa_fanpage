@@ -163,7 +163,7 @@ include_once("init.php");
         include_once("templates/menu_social_media.phtml");
     }  ?>
 
-        <?php include_once("menu_left.phtml"); ?>
+        <?php include_once("templates/menu_left.phtml"); ?>
     </div>
     <div class="span8" id="main">
         <!-- the main content is managed by initApp() -->
