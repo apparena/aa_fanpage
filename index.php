@@ -238,7 +238,6 @@ if ( isset( $fb_signed_request['app_data'] ) ){
 if ( isset( $_GET['landingpage'] ) ){
     $landingpage = $_GET['landingpage'];
 }
-
 ?>
 
 <script>

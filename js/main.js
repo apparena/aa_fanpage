@@ -52,7 +52,7 @@ require([
         $('#fangate').hide();
     });
 
-    aa_tmpl_load("index.phtml");
+    aa_tmpl_load( landingpage );
     $('#terms-link').click(function () {
         aa_tmpl_load('terms.phtml');
     });
