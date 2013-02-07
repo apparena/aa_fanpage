@@ -1,6 +1,10 @@
 <?php 
 	include_once ( '../init.php' );
 ?>
+<script>
+    $('.nav-item').removeClass('active');
+    $('.nav-item-1').addClass('active');
+</script>
 
 <?php
 $pages = explode( ",", $aa['config']['slider_pages']['value'] );

@@ -137,7 +137,7 @@ $menu = explode(",", $aa['config']['menu_order']['value']);
                             }
                         }
                         if ( $showItem ) { ?>
-                            <li>
+                            <li class="nav-item nav-item-<?=$item;?>">
                                 <a onclick="aa_tmpl_load('<?=$template;?>', {target:'#main',effect:'fade'});">
                                     <?=$aa['config']['page' . $item . '_caption']['value']?>
                                 </a>
