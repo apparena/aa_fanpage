@@ -226,10 +226,20 @@ if (isset($aaForJs['inst']['fb_app_secret'])) {
 if (isset($aaForJs['inst']['aa_app_secret'])) {
     unset($aaForJs['inst']['aa_app_secret']);
 }
+
+// Get Landingpage from Url
+$landingpage = "index.phtml";
+if ( isset( $fb_signed_request['app_data']['landingpage'] ) ){
+    $landingpage = $fb_signed_request['app_data']['landingpage'];
+}
+if ( isset( $_GET['landingpage'] ) ){
+    $landingpage = $_GET['landingpage'];
+}
 ?>
 
 <script>
     aa = <?php echo json_encode($aaForJs); ?>;
+    landingpage = '<?=$landingpage?>';
 </script>
 
 <!-- Debug mode -->
