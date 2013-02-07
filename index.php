@@ -174,8 +174,10 @@ $menu = explode(",", $aa['config']['menu_order']['value']);
     </div>
 </div>
 
-<div class="social-plugins">
-    <div class="fb-comments" data-href="<?=$aa['fb']['share_url'];?>" data-width="620" data-num-posts="10"></div>
+<div class="social-plugins row">
+    <div class="offset2 span8">
+        <div class="fb-comments" data-href="<?=$aa['fb']['share_url'];?>" data-width="620" data-num-posts="10"></div>
+    </div>
 </div>
 
 <div class="custom-footer">
