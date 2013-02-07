@@ -7,7 +7,7 @@
  * @param tmpl_filename Filename of the template
  * @param data GET-Parameters which will be loaded as well.
  * @param target css-selector to load the template in
- * @param effect transition effect: can be slide, fade or loading
+ * @param effect transition effect: can be slide, fade or switch
  */
 function aa_tmpl_load( tmpl_filename, data, target, effect ) {
     if ( typeof( data ) == 'undefined' ) {
@@ -22,21 +22,21 @@ function aa_tmpl_load( tmpl_filename, data, target, effect ) {
         effect = 'slidedown';
     }
     var url = "templates/" + tmpl_filename + "?aa_inst_id=" + aa.inst.aa_inst_id + data;
-    if ( effect == 'slidedown' ) {
+    if ( effect == 'fade' ) {
+        $(target).fadeOut(0, function () {
+            $(target).load( url, function () {
+                $(target).fadeIn(600, function () {
+                    FB.Canvas.scrollTo(0, 0);
+                });
+            });
+        });
+    } else {
         show_loading(); // show the loading screen
         $(target).slideUp(0, function () {
             $(target).load( url, function () {
                 $(target).slideDown(600, function () {
                     FB.Canvas.scrollTo(0, 0);
                     hide_loading(); // hide the loading screen
-                });
-            });
-        });
-    } else if ( effect == 'fade' ) {
-        $(target).fadeOut(0, function () {
-            $(target).load( url, function () {
-                $(target).fadeIn(600, function () {
-                    FB.Canvas.scrollTo(0, 0);
                 });
             });
         });
