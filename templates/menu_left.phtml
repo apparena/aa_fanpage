@@ -22,7 +22,7 @@ var_dump($menu);
             if ( $showItem ) { ?>
                 <li>
                     <a onclick="aa_tmpl_load('<?=$template;?>', {target:'#main',effect:'fade'});">
-                        <?=$aa['config']['page' . $item . '_caption']['value']?>
+                        <?=$aa['config']['page' . $item . '_caption']['value']?> <?=$item?>
                     </a>
                 </li>
         <?php }
