@@ -50,20 +50,12 @@ catch (Exception $e){
 
         <!-- RSS Feed Items -->
         <div class="span8">
-            <?php
-            foreach ( $data['entries'] as $item ) {
-                /*$graph = OpenGraph::fetch( $item['link'] );
-                var_dump($graph->keys());
-                var_dump($graph->schema);
-
-                foreach ($graph as $key => $value) {
-                    echo "$key => $value";
-                }*/
-                ?>
+            <div class="content">
+                <?=$aa['config']['page3_content']['value'];?>
+            </div>
+            <?php foreach ( $data['entries'] as $item ) { ?>
                 <div class="item">
-                    <div class="thumbnail pull-left">
-
-                    </div>
+                    <!--<div class="thumbnail pull-left"></div>-->
                     <div class="title">
                         <h4><a href="<?=$item['link']; ?>" target="_blank"><?=$item['title']; ?></a></h4>
                     </div>
