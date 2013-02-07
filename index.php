@@ -181,6 +181,7 @@ $menu = explode(",", $aa['config']['menu_order']['value']);
 
 <div class="social-plugins row">
     <div class="offset2 span8">
+        <hr>
         <h3><?php __p('leave_a_comment'); ?></h3>
         <div class="fb-comments" data-href="<?=$aa['fb']['share_url'];?>" data-width="620" data-num-posts="10"></div>
     </div>
