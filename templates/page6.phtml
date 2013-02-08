@@ -19,23 +19,30 @@ if ( in_array("6",$pages ) ){
 
 <div class="contact-form">
     <form class="form-horizontal" action="void();" id="form-modal">
-        <div class="control-group span2">
-            <label><?php __p('gender'); ?></label>
-            <select class="span2">
-                <option><?php __p('male'); ?></option>
-                <option><?php __p('female'); ?></option>
-            </select>
-        </div>
-        <div class="control-group span3">
-            <label><?php __p('firstname'); ?></label>
-            <div class="controls">
+        <div class="row">
+            <div class="control-group span2">
+                <label><?php __p('gender'); ?></label>
+                <select class="span2">
+                    <option><?php __p('male'); ?></option>
+                    <option><?php __p('female'); ?></option>
+                </select>
+            </div>
+            <div class="control-group span3">
+                <label><?php __p('firstname'); ?></label>
                 <input type="text" id="firstname" placeholder="Your name" class="required span3">
             </div>
-        </div>
-        <div class="control-group span3">
-            <label><?php __p('lastname'); ?></label>
-            <div class="controls">
+            <div class="control-group span3">
+                <label><?php __p('lastname'); ?></label>
                 <input type="text" id="lastname" placeholder="Your name" class="required span3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="control-group span2">
+                <label><?php __p('gender'); ?></label>
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span8 required email" id="email" type="text">
+                </div>
             </div>
         </div>
 
