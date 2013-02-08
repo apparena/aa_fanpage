@@ -1,5 +1,5 @@
-define('form',
-    //[], //['foo', 'bar'],
+define(//'form',
+    [], //['foo', 'bar'],
     // module definition function
     // dependencies (foo and bar) are mapped to function parameters
     function (/*foo, bar*/) {
