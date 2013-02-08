@@ -7,7 +7,8 @@ require.config({
         bootstrap:'//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min',
         facebook:'//connect.facebook.net/de_DE/all',
         galleria:'libs/galleria/galleria-1.2.9.min',
-        script:'script'
+        script:'script',
+        form:'components/form/main'
     },
     shim:{ // load required non AMD modules here...
         jquery:{

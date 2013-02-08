@@ -1,14 +1,22 @@
-<?php 
-	include_once ( '../init.php' );
+<?php
+include_once ('../init.php');
 ?>
 <script>
     $('.nav-item').removeClass('active');
     $('.nav-item-1').addClass('active');
+
+    require(['component/form/main'],
+            function (Form) {
+                // start the main module which in-turn
+                // loads other modules
+                var myform = new Form();
+                myform.doStuff();
+            });
 </script>
 
 <?php
-$pages = explode( ",", $aa['config']['slider_pages']['value'] );
-if ( in_array("1",$pages ) ){
+$pages = explode(",", $aa['config']['slider_pages']['value']);
+if (in_array("1", $pages)) {
     include_once('slider.phtml');
 }
 ?>
