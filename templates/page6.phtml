@@ -29,20 +29,25 @@ if ( in_array("6",$pages ) ){
             </div>
             <div class="control-group span3">
                 <label><?php __p('firstname'); ?></label>
-                <input type="text" id="firstname" placeholder="Your name" class="required span3">
+                <input type="text" id="firstname" placeholder="<?php __p('firstname'); ?>" class="required span3">
             </div>
             <div class="control-group span3">
                 <label><?php __p('lastname'); ?></label>
-                <input type="text" id="lastname" placeholder="Your name" class="required span3">
+                <input type="text" id="lastname" placeholder="<?php __p('lastname'); ?>" class="required span3">
             </div>
         </div>
         <div class="row">
-            <div class="control-group span2">
-                <label><?php __p('gender'); ?></label>
+            <div class="control-group span4">
+                <label><?php __p('email'); ?></label>
                 <div class="input-prepend">
-                    <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span8 required email" id="email" type="text">
+                    <input class="span4 required email" placeholder="<?php __p('email'); ?>" id="email" type="text">
                 </div>
+            </div>
+            <div class="control-group span4">
+                <label class="checkbox">
+                    <input type="checkbox" id="newsletter_registration" value="1">
+                    <?php __p('newsletter_registration'); ?>
+                </label>
             </div>
         </div>
 
