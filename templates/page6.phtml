@@ -80,13 +80,13 @@ if ( in_array("6",$pages ) ){
                         <?php
                         $requests = explode( ",", $aa['config']['form_requests']['value'] );
                         foreach ($requests as $request ) {?>
-                            <option>$request</option>
+                            <option><?=$request?></option>
                         <?php } ?>
                     </select>
                 </div>
-                <div class="control-group span3">
+                <div class="control-group span6">
                     <label><?php __p('title'); ?></label>
-                    <input type="text" id="title" placeholder="<?php __p('title'); ?>" class="required span3">
+                    <input type="text" id="title" placeholder="<?php __p('title'); ?>" class="required span6">
                 </div>
             </div>
         </fieldset>
