@@ -18,5 +18,48 @@ if ( in_array("6",$pages ) ){
 </div>
 
 <div class="contact-form">
-
+    <form class="form-horizontal" action="void();" id="form-modal">
+        <div class="controls controls-row">
+            <div class="control-group span2">
+                <label class="control-label" ><?php __p('gender'); ?></label>
+                <select">
+                    <option><?php __p('male'); ?></option>
+                    <option><?php __p('female'); ?></option>
+                </select>
+            </div>
+            <div class="control-group span3">
+                <label class="control-label" for="firstname"><?php __p('firstname'); ?></label>
+                <div class="controls">
+                    <input type="text" id="firstname" placeholder="Your name" class="required">
+                </div>
+            </div>
+            <div class="control-group span3">
+                <label class="control-label" for="lastname"><?php __p('lastname'); ?></label>
+                <div class="controls">
+                    <input type="text" id="lastname" placeholder="Your name" class="required">
+                </div>
+            </div>
+        </div>
+        <div class="controls controls-row">
+            <div class="control-group span2">
+                <label class="control-label" ><?php __p('gender'); ?></label>
+                <select">
+                <option><?php __p('male'); ?></option>
+                <option><?php __p('female'); ?></option>
+                </select>
+            </div>
+            <div class="control-group span3">
+                <label class="control-label" for="firstname"><?php __p('firstname'); ?></label>
+                <div class="controls">
+                    <input type="text" id="abc" placeholder="Your name" class="required">
+                </div>
+            </div>
+            <div class="control-group span3">
+                <label class="control-label" for="lastname"><?php __p('lastname'); ?></label>
+                <div class="controls">
+                    <input type="text" id="def" placeholder="Your name" class="required">
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
