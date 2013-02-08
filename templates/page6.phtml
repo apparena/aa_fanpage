@@ -19,37 +19,60 @@ if ( in_array("6",$pages ) ){
 
 <div class="contact-form">
     <form class="form-horizontal" action="void();" id="form-modal">
-        <div class="row">
-            <div class="control-group span2">
-                <label><?php __p('gender'); ?></label>
-                <select class="span2">
-                    <option><?php __p('male'); ?></option>
-                    <option><?php __p('female'); ?></option>
-                </select>
-            </div>
-            <div class="control-group span3">
-                <label><?php __p('firstname'); ?></label>
-                <input type="text" id="firstname" placeholder="<?php __p('firstname'); ?>" class="required span3">
-            </div>
-            <div class="control-group span3">
-                <label><?php __p('lastname'); ?></label>
-                <input type="text" id="lastname" placeholder="<?php __p('lastname'); ?>" class="required span3">
-            </div>
-        </div>
-        <div class="row">
-            <div class="control-group span4">
-                <label><?php __p('email'); ?></label>
-                <div class="input-prepend">
-                    <input class="span4 required email" placeholder="<?php __p('email'); ?>" id="email" type="text">
+        <fieldset>
+            <legend><?php __p('contact_us'); ?></legend>
+            <div class="row">
+                <div class="control-group span2">
+                    <label><?php __p('gender'); ?></label>
+                    <select class="span2">
+                        <option><?php __p('male'); ?></option>
+                        <option><?php __p('female'); ?></option>
+                    </select>
+                </div>
+                <div class="control-group span3">
+                    <label><?php __p('firstname'); ?></label>
+                    <input type="text" id="firstname" placeholder="<?php __p('firstname'); ?>" class="required span3">
+                </div>
+                <div class="control-group span3">
+                    <label><?php __p('lastname'); ?></label>
+                    <input type="text" id="lastname" placeholder="<?php __p('lastname'); ?>" class="required span3">
                 </div>
             </div>
-            <div class="control-group span4">
-                <label class="checkbox">
-                    <input type="checkbox" id="newsletter_registration" value="1">
-                    <?php __p('newsletter_registration'); ?>
-                </label>
+            <div class="row">
+                <div class="control-group span4">
+                    <label><?php __p('email'); ?></label>
+                    <div class="input-prepend">
+                        <input class="span4 required email" placeholder="<?php __p('email'); ?>" id="email" type="text">
+                    </div>
+                </div>
+                <div class="control-group span4">
+                    <label>&nbsp;</label>
+                    <label class="checkbox">
+                        <input type="checkbox" id="newsletter_registration" value="1">
+                        <?php __p('newsletter_registration'); ?>
+                    </label>
+                </div>
             </div>
-        </div>
-
+            <div class="row">
+                <div class="control-group span6">
+                    <label><?php __p('street'); ?></label>
+                    <input type="text" id="street" placeholder="<?php __p('street'); ?>" class="required span6">
+                </div>
+                <div class="control-group span2">
+                    <label><?php __p('nr'); ?></label>
+                    <input type="text" id="nr" placeholder="<?php __p('nr'); ?>" class="required span2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group span2">
+                    <label><?php __p('zip'); ?></label>
+                    <input type="text" id="zip" placeholder="<?php __p('zip'); ?>" class="required span2">
+                </div>
+                <div class="control-group span6">
+                    <label><?php __p('city'); ?></label>
+                    <input type="text" id="city" placeholder="<?php __p('city'); ?>" class="required span6">
+                </div>
+            </div>
+        </fieldset>
     </form>
 </div>
