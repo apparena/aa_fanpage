@@ -73,6 +73,22 @@ if ( in_array("6",$pages ) ){
                     <input type="text" id="city" placeholder="<?php __p('city'); ?>" class="required span6">
                 </div>
             </div>
+            <div class="row">
+                <div class="control-group span2">
+                    <label><?php __p('your_request'); ?></label>
+                    <select class="span2">
+                        <?php
+                        $requests = explode( ",", $aa['config']['form_requests']['value'] );
+                        foreach ($requests as $request ) {?>
+                            <option>$request</option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="control-group span3">
+                    <label><?php __p('title'); ?></label>
+                    <input type="text" id="title" placeholder="<?php __p('title'); ?>" class="required span3">
+                </div>
+            </div>
         </fieldset>
     </form>
 </div>
