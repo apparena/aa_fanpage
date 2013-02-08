@@ -4,14 +4,6 @@ include_once ('../init.php');
 <script>
     $('.nav-item').removeClass('active');
     $('.nav-item-1').addClass('active');
-
-    require(['components/form/main'],
-            function () {
-                // start the main module which in-turn
-                // loads other modules
-                var myform = new Form();
-                myform.doStuff();
-            });
 </script>
 
 <?php
