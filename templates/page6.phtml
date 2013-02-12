@@ -117,10 +117,10 @@ if ( in_array("6",$pages ) ){
 $(document).ready( function () {
 	initValidation();
 	$( '#contact-form' ).validate( $.register_bootstrap_form );
-	$.validator
+	$.validator.setDefaults( $.register_bootstrap_form );
 	$( '#sendMessage' ).click( function () {
 		var isValid = $('#contact-form').valid();
-        if (isValid) {
+        if ( isValid ) {
         	disableForm( '#contact-form' );
             var user_data = $( '#contact-form' ).serializeObject();
         }
