@@ -1,3 +1,5 @@
+<script type="text/javascript" src="modules/registration/registration.js"></script>
+
 <?php
 include_once ( '../init.php' );
 
@@ -53,26 +55,36 @@ if ( in_array("6",$pages ) ){
                     </label>
                 </div>
             </div>
-            <div class="row">
-                <div class="control-group span6">
-                    <label><?php __p('street'); ?></label>
-                    <input type="text" id="street" placeholder="<?php __p('street'); ?>" class="required span6">
-                </div>
-                <div class="control-group span2">
-                    <label><?php __p('nr'); ?></label>
-                    <input type="text" id="nr" placeholder="<?php __p('nr'); ?>" class="required span2">
-                </div>
-            </div>
-            <div class="row">
-                <div class="control-group span2">
-                    <label><?php __p('zip'); ?></label>
-                    <input type="text" id="zip" placeholder="<?php __p('zip'); ?>" class="required span2">
-                </div>
-                <div class="control-group span6">
-                    <label><?php __p('city'); ?></label>
-                    <input type="text" id="city" placeholder="<?php __p('city'); ?>" class="required span6">
-                </div>
-            </div>
+            <?php 
+            	
+            	if ( isset( $aa['config']['custom_field_address_active']['value'] ) && $aa['config']['custom_field_address_active']['value'] == 1 ) {
+	            	
+	            	$required = '';
+	            	if ( isset( $aa['config']['custom_field_address_required']['value'] ) && $aa['config']['custom_field_address_required']['value'] == 1 ) {
+						$required = 'required ';
+					}
+	            ?>
+	            <div class="row address-item">
+	                <div class="control-group span6">
+	                    <label><?php __p('street'); ?></label>
+	                    <input type="text" id="street" placeholder="<?php __p('street'); ?>" class="<?php echo $required; ?>span6">
+	                </div>
+	                <div class="control-group span2">
+	                    <label><?php __p('nr'); ?></label>
+	                    <input type="text" id="nr" placeholder="<?php __p('nr'); ?>" class="<?php echo $required; ?>span2">
+	                </div>
+	            </div>
+	            <div class="row address-item">
+	                <div class="control-group span2">
+	                    <label><?php __p('zip'); ?></label>
+	                    <input type="text" id="zip" placeholder="<?php __p('zip'); ?>" class="<?php echo $required; ?>span2">
+	                </div>
+	                <div class="control-group span6">
+	                    <label><?php __p('city'); ?></label>
+	                    <input type="text" id="city" placeholder="<?php __p('city'); ?>" class="<?php echo $required; ?>span6">
+	                </div>
+	            </div>
+	        <?php } // end if show address fields ?>
             <div class="row">
                 <div class="control-group span2">
                     <label><?php __p('your_request'); ?></label>
@@ -96,8 +108,22 @@ if ( in_array("6",$pages ) ){
                 </div>
             </div>
             <div class="form-actions">
-                <button type="button" class="btn btn-primary"><?php __p('send_message'); ?></button>
+                <button id="sendMessage" type="button" class="btn btn-primary"><?php __p('send_message'); ?></button>
             </div>
         </fieldset>
     </form>
 </div>
+<script>
+$(document).ready( function () {
+	initValidation();
+	$( '#contact-form' ).validate( $.register_bootstrap_form );
+	$.validator
+	$( '#sendMessage' ).click( function () {
+		var isValid = $('#contact-form').valid();
+        if (isValid) {
+        	disableForm( '#contact-form' );
+            var user_data = $( '#contact-form' ).serializeObject();
+        }
+	});
+});
+</script>

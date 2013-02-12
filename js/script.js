@@ -80,4 +80,144 @@ function show_admin_info() {
     $('#admin_modal').modal("show");
 }
 
+
+/**
+ * Initialize the form.
+ * Set translations and rules.
+ */
+function initValidation () {
+	var aa_data = {};
+    var messages = {
+    	email: {
+            required: aa.t.validation_enter_email,
+            email: aa.t.validation_email_invalid
+        },
+        first_name: {
+            required: aa.t.validation_enter_first_name,
+            minlength: aa.t.validation_first_name_min.replace( '%s', '{0}' )
+        },
+        last_name: {
+            required: aa.t.validation_enter_last_name,
+            minlength: aa.t.validation_last_name_min.replace( '%s', '{0}' )
+        }
+    };
+    $.register_bootstrap_form.messages = $.extend( $.register_bootstrap_form.messages, messages );
+
+    // create address fields validation
+    if ( typeof( aa.conf.custom_field_address_active.value ) != 'undefined' && aa.conf.custom_field_address_active.value == '1' ) {
+
+        // add this field to the validation
+        var required = false;
+        if ( typeof( aa.conf.custom_field_address_required.value ) != 'undefined' && aa.conf.custom_field_address_required.value == '1' ) {
+            required = true;
+        }
+        var address_validation = {
+            street:{
+                required:required,
+                minlength:3
+            },
+            housenumber:{
+                required:required,
+                minlength:1
+            },
+            zip:{
+                required:required,
+                minlength:5,
+                maxlength:5,
+                number: true
+            },
+            city:{
+                required:required,
+                minlength:3
+            }
+        };
+        
+        messages = {
+
+        	street:{
+                required: aa.t.validation_enter_street,
+                minlength: aa.t.validation_street_minlength.replace( '%s', '{0}' )
+            },
+            housenumber:{
+                required: aa.t.validation_enter_housenumber,
+                minlength: aa.t.validation_housenumber_minlength.replace( '%s', '{0}' )
+            },
+            zip:{
+                required: aa.t.validation_enter_zip,
+                minlength: aa.t.validation_zip_not_valid_min,
+                maxlength: aa.t.validation_zip_not_valid_max,
+                number: aa.t.validation_zip_not_valid
+            },
+            city:{
+                required:aa.t.validation_enter_city,
+                minlength:aa.t.validation_city_not_valid.replace( '%s', '{0}' )
+            }
+
+        };
+        
+        $.register_bootstrap_form.rules = $.extend($.register_bootstrap_form.rules, address_validation);
+        $.register_bootstrap_form.messages = $.extend($.register_bootstrap_form.messages, messages);
+        
+
+    } // end add address field if activated
+}
+
+
+
+/**
+ * Disables all form elements in a certain area.
+ * @param {String} formelement the selector for the area to disable.
+ */
+function disableForm ( formelement ) {
+	formelement.find( 'select' ).each( function(index) {
+		$(this).attr( 'disabled', 'disabled' );
+	});
+	formelement.find( 'input' ).each( function(index) {
+		$(this).attr( 'disabled', 'disabled' );
+	});
+	formelement.find( 'button' ).each( function(index) {
+		$(this).attr( 'disabled', 'disabled' );
+	});
+}
+
+/**
+ * Enables all form elements in a certain area.
+ * @param {String} formelement The selector for the area to disable.
+ */
+function enableForm ( formelement ) {
+	formelement.find( 'select' ).each( function(index) {
+		$(this).removeAttr( 'disabled' );
+	});
+	formelement.find( 'input' ).each( function(index) {
+		$(this).removeAttr( 'disabled' );
+	});
+	formelement.find( 'button' ).each( function(index) {
+		$(this).removeAttr( 'disabled' );
+	});
+}
+
+/**
+ * Creates an object from a form.
+ * Collects the data the user entered in the form.
+ * @return {Object} The object containing the users entered data.
+ */
+$.fn.serializeObject = function () {
+	var items = {};
+	var form = this[ 0 ];
+	for( var index = 0; index < form.length; index++ ) {
+		var item = form[ index ];
+		if ( typeof( item.type ) != 'undefined' && item.type == 'checkbox' ) {
+			item.value = $(item).is( ':checked' );
+		}
+		if ( typeof( item.name ) != 'undefined' && item.name.length > 0 ) {
+			items[ item.name ] = item.value;
+		} else {
+			if ( typeof( item.id ) != 'undefined' && item.id.length > 0 ) {
+    			items[ item.id ] = item.value;
+    		}
+		}
+	}
+	return items;
+};
+
 function urlencode(str){str=(str+'').toString();return encodeURIComponent(str).replace(/!/g,'%21').replace(/'/g,'%27').replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/\*/g,'%2A').replace(/%20/g,'+');}
