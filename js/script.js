@@ -82,10 +82,56 @@ function show_admin_info() {
 
 
 /**
+ * This object is used to define the rules,
+ * messages and functionalities of the validation.
+ */
+$.register_bootstrap_form = {
+    errorClass: "error",
+    validClass: "success",
+    errorElement: "span",
+    highlight: function(element, errorClass, validClass) {
+        if (element.type === 'radio') {
+            this.findByName(element.name ).closest(".control-group").removeClass(validClass).addClass(errorClass);
+        } else {
+            $(element).closest(".control-group").removeClass(validClass).addClass(errorClass);
+        }
+    },
+    unhighlight: function(element, errorClass, validClass) {
+        if (element.type === 'radio') {
+            this.findByName(element.name ).closest(".control-group").removeClass(errorClass).addClass(validClass);
+        } else {
+            $(element).closest(".control-group").removeClass(errorClass).addClass(validClass);
+        }
+    },
+    errorPlacement: function(error, element) {
+        error.prependTo(element.closest(".control-group"));
+    },
+    rules:{
+        email:{
+            required:true,
+            email:true
+        },
+        firstname:{
+            required:true,
+            minlength: 3
+        },
+        lastname:{
+            required:true,
+            minlength: 3
+        }
+    }
+};
+
+
+/**
  * Initialize the form.
  * Set translations and rules.
  */
 function initValidation () {
+	
+	/*
+	 * standard fields
+	 */
     var messages = {
     	email: {
             required: aa.t.validation_enter_email,
@@ -102,6 +148,9 @@ function initValidation () {
     };
     $.register_bootstrap_form.messages = $.extend( $.register_bootstrap_form.messages, messages );
 
+    /*
+	 * address fields
+	 */
     var address_validation = {};
     // create address fields validation
     if ( typeof( aa.conf.custom_field_address_active.value ) != 'undefined' && aa.conf.custom_field_address_active.value == '1' ) {
@@ -158,7 +207,70 @@ function initValidation () {
 
     } // end add address field if activated
     
+    /*
+	 * newsletter field
+	 */
+    var newsletter_validation = {};
+    // create address fields validation
+    if ( typeof( aa.conf.custom_field_newsletter_active.value ) != 'undefined' && aa.conf.custom_field_newsletter_active.value == '1' ) {
+
+        // add this field to the validation
+        var required = false;
+        if ( typeof( aa.conf.custom_field_newsletter_required.value ) != 'undefined' && aa.conf.custom_field_newsletter_required.value == '1' ) {
+            required = true;
+        
+            newsletter_validation = {
+	            newsletter:{
+	                required: required
+	            }
+	        };
+        }
+        messages = {
+        	street:{
+                required: aa.t.validation_enter_newsletter
+            }
+        };
+        $.register_bootstrap_form.rules = $.extend($.register_bootstrap_form.rules, newsletter_validation);
+        $.register_bootstrap_form.messages = $.extend($.register_bootstrap_form.messages, messages);
+    } // end add newsletter field if activated
     
+    /*
+	 * request fields
+	 */
+    var request_validation = {};
+    // create address fields validation
+    if ( typeof( aa.conf.custom_field_request_active.value ) != 'undefined' && aa.conf.custom_field_request_active.value == '1' ) {
+
+        // add this field to the validation
+        var required = false;
+        if ( typeof( aa.conf.custom_field_request_required.value ) != 'undefined' && aa.conf.custom_field_request_required.value == '1' ) {
+            required = true;
+        
+            request_validation = {
+            	subject:{
+	                required:required,
+	                minlength:3
+	            },
+	            message:{
+	                required:required,
+	                minlength:5
+	            }
+	        };
+        }
+        messages = {
+        	subject:{
+                required: aa.t.validation_enter_subject,
+                minlength: aa.t.validation_subject_minlength.replace( '%s', '{0}' )
+            },
+            message:{
+                required: aa.t.validation_enter_message,
+                minlength: aa.t.validation_message_minlength.replace( '%s', '{0}' )
+            }
+        };
+        $.register_bootstrap_form.rules = $.extend($.register_bootstrap_form.rules, request_validation);
+        $.register_bootstrap_form.messages = $.extend($.register_bootstrap_form.messages, messages);
+
+    } // end add request fields if activated
     
 }
 
