@@ -113,10 +113,10 @@ function sendMailCallback ( response ) {
 	$( '#contact-form-container' ).fadeOut(500, function(){
 		if ( typeof( response ) != 'undefined' ) {
 			if ( typeof( response.error ) != 'undefined' ) {
-				$( '#contact-form-container' ).html( '<div class="alert alert-error">' + aa.t.mail_send_error + '</div>' ).fadeIn( 500 );
+				$( '#contact-form-container' ).html( '<div id="message" class="alert alert-error">' + aa.t.mail_send_error + '</div>' ).fadeIn( 500 );
 //				showMsg( aa.t.mail_send_error );
 			} else {
-				$( '#contact-form-container' ).html( '<div class="alert alert-success">' + aa.t.mail_send_success + '</div>' ).fadeIn( 500 );
+				$( '#contact-form-container' ).html( '<div id="message" class="alert alert-success">' + aa.t.mail_send_success + '</div>' ).fadeIn( 500 );
 //				showMsg( aa.t.mail_send_success, 'alert-success' );
 			}
 		}
@@ -147,6 +147,7 @@ $.register_bootstrap_form = {
         }
     },
     errorPlacement: function(error, element) {
+    	error.addClass( 'error-message' );
         error.prependTo(element.closest(".control-group"));
     },
     rules:{
