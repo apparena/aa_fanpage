@@ -87,6 +87,10 @@ function sendForm() {
     if ( isValid ) {
     	disableForm( '#contact-form' );
         var user_data = $( '#contact-form' ).serializeObject();
+        
+        // remove send button, it contains no data...
+        delete user_data.sendMessage;
+        
         sendMail( user_data );
     }
     
