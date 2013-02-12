@@ -257,7 +257,8 @@ function initValidation () {
 	        };
         }
         messages = {
-        	street:{
+        		
+        	newsletter:{
                 required: aa.t.validation_enter_newsletter
             }
         };
@@ -266,15 +267,15 @@ function initValidation () {
     } // end add newsletter field if activated
     
     /*
-	 * request fields
+	 * subject and message fields are always active and required!
 	 */
     var request_validation = {};
     // create address fields validation
-    if ( typeof( aa.conf.custom_field_request_active.value ) != 'undefined' && aa.conf.custom_field_request_active.value == '1' ) {
+//    if ( typeof( aa.conf.custom_field_request_active.value ) != 'undefined' && aa.conf.custom_field_request_active.value == '1' ) {
 
         // add this field to the validation
         var required = false;
-        if ( typeof( aa.conf.custom_field_request_required.value ) != 'undefined' && aa.conf.custom_field_request_required.value == '1' ) {
+//        if ( typeof( aa.conf.custom_field_request_required.value ) != 'undefined' && aa.conf.custom_field_request_required.value == '1' ) {
             required = true;
         
             request_validation = {
@@ -287,7 +288,7 @@ function initValidation () {
 	                minlength:5
 	            }
 	        };
-        }
+//        }
         messages = {
         	subject:{
                 required: aa.t.validation_enter_subject,
@@ -301,7 +302,59 @@ function initValidation () {
         $.register_bootstrap_form.rules = $.extend($.register_bootstrap_form.rules, request_validation);
         $.register_bootstrap_form.messages = $.extend($.register_bootstrap_form.messages, messages);
 
-    } // end add request fields if activated
+//    } // end add request fields if activated
+    
+        
+    var tel_validation = {};
+    // create address fields validation
+    if ( typeof( aa.conf.custom_field_tel_active.value ) != 'undefined' && aa.conf.custom_field_tel_active.value == '1' ) {
+
+        // add this field to the validation
+        var required = false;
+        if ( typeof( aa.conf.custom_field_tel_required.value ) != 'undefined' && aa.conf.custom_field_tel_required.value == '1' ) {
+            required = true;
+        
+            tel_validation = {
+	            tel:{
+	                required: required
+	            }
+	        };
+        }
+        messages = {
+        		
+        	tel:{
+                required: aa.t.validation_enter_tel
+            }
+        };
+        $.register_bootstrap_form.rules = $.extend($.register_bootstrap_form.rules, tel_validation);
+        $.register_bootstrap_form.messages = $.extend($.register_bootstrap_form.messages, messages);
+    } // end add tel field if activated
+    
+    
+    var fax_validation = {};
+    // create address fields validation
+    if ( typeof( aa.conf.custom_field_fax_active.value ) != 'undefined' && aa.conf.custom_field_fax_active.value == '1' ) {
+
+        // add this field to the validation
+        var required = false;
+        if ( typeof( aa.conf.custom_field_fax_required.value ) != 'undefined' && aa.conf.custom_field_fax_required.value == '1' ) {
+            required = true;
+        
+            fax_validation = {
+	            fax:{
+	                required: required
+	            }
+	        };
+        }
+        messages = {
+        		
+        	fax:{
+                required: aa.t.validation_enter_fax
+            }
+        };
+        $.register_bootstrap_form.rules = $.extend($.register_bootstrap_form.rules, fax_validation);
+        $.register_bootstrap_form.messages = $.extend($.register_bootstrap_form.messages, messages);
+    } // end add tel field if activated
     
 }
 

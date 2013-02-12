@@ -18,11 +18,11 @@ if ( isset( $_POST[ 'user_data' ] ) ) {
 }
 
 /* Use App-Manager variables to send out the email */
-if ( isset( $session->config['customer_email']['value'] ) )
-	$customer['email'] = $session->config['customer_email']['value'];
+if ( isset( $session->config['wizard_email']['value'] ) )
+	$customer['email'] = $session->config['wizard_email']['value'];
 
-if ( isset( $session->config['customer_name']['value'] ) )
-	$customer['name'] = $session->config['customer_name']['value'];
+if ( isset( $session->config['wizard_company_name']['value'] ) )
+	$customer['name'] = $session->config['wizard_company_name']['value'];
 
 if ( isset( $session->config['email_subject']['value'] ) )
 	$email['subject'] = $session->config['email_subject']['value'];

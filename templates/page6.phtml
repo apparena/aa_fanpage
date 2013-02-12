@@ -64,6 +64,42 @@ if ( in_array("6",$pages ) ){
 	                </div>
 	            <?php } // end if show newsletter field ?>
             </div>
+            
+            <div class="row">
+            	<?php 
+            	
+            	if ( isset( $aa['config']['custom_field_tel_active']['value'] ) && $aa['config']['custom_field_tel_active']['value'] == 1 ) {
+	            	
+	            	$required = '';
+	            	if ( isset( $aa['config']['custom_field_tel_required']['value'] ) && $aa['config']['custom_field_tel_required']['value'] == 1 ) {
+						$required = ' required';
+					}
+	            ?>
+	                <div class="control-group span4">
+	                    <label><?php __p('tel'); ?></label>
+	                    <div class="input-prepend">
+	                        <input class="span4 tel<?php echo $required; ?>" name="tel" placeholder="<?php __p('tel'); ?>" id="tel" type="text">
+	                    </div>
+	                </div>
+	            <?php } // end if show tel field ?>
+                <?php 
+            	
+            	if ( isset( $aa['config']['custom_field_fax_active']['value'] ) && $aa['config']['custom_field_fax_active']['value'] == 1 ) {
+	            	
+	            	$required = '';
+	            	if ( isset( $aa['config']['custom_field_fax_required']['value'] ) && $aa['config']['custom_field_fax_required']['value'] == 1 ) {
+						$required = ' required';
+					}
+	            ?>
+	                <div class="control-group span4">
+	                    <label><?php __p('fax'); ?></label>
+	                    <div class="input-prepend">
+	                        <input class="span4 fax<?php echo $required; ?>" name="fax" placeholder="<?php __p('fax'); ?>" id="fax" type="text">
+	                    </div>
+	                </div>
+	            <?php } // end if show fax field ?>
+            </div>
+            
             <?php 
             	
             	if ( isset( $aa['config']['custom_field_address_active']['value'] ) && $aa['config']['custom_field_address_active']['value'] == 1 ) {
@@ -94,15 +130,10 @@ if ( in_array("6",$pages ) ){
 	                </div>
 	            </div>
 	        <?php } // end if show address fields ?>
-	        <?php 
+            <div class="row">
+	            <?php 
                 if ( isset( $aa['config']['custom_field_request_active']['value'] ) && $aa['config']['custom_field_request_active']['value'] == 1 ) {
-	            	
-	            	$required = '';
-	            	if ( isset( $aa['config']['custom_field_request_required']['value'] ) && $aa['config']['custom_field_request_required']['value'] == 1 ) {
-						$required = 'required ';
-					}
 				?>
-	            <div class="row">
 	                <div class="control-group span2">
 	                    <label><?php __p('your_request'); ?></label>
 	                    <select class="span2" id="request" name="request">
@@ -113,18 +144,18 @@ if ( in_array("6",$pages ) ){
 	                        <?php } ?>
 	                    </select>
 	                </div>
-	                <div class="control-group span6">
-	                    <label><?php __p('subject'); ?></label>
-	                    <input type="text" id="subject" name="subject" placeholder="<?php __p('subject'); ?>" class="<?php echo $required; ?>span6">
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="control-group span2">
-	                    <label><?php __p('message'); ?></label>
-	                    <textarea rows="8" class="span8" id="message" name="message" class="<?php echo $required; ?>"></textarea>
-	                </div>
-	            </div>
-	        <?php } // end if show request fields ?>
+                <?php } // end if show request fields ?>
+                <div class="control-group span6">
+                    <label><?php __p('subject'); ?></label>
+                    <input type="text" id="subject" name="subject" placeholder="<?php __p('subject'); ?>" class="required span6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-group span2">
+                    <label><?php __p('message'); ?></label>
+                    <textarea rows="8" class="span8" id="message" name="message" class="required"></textarea>
+                </div>
+            </div>
             <div class="form-actions">
                 <button id="sendMessage" type="button" class="btn btn-primary"><?php __p('send_message'); ?></button>
             </div>
