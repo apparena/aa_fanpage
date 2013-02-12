@@ -93,12 +93,20 @@ function sendForm() {
 }
 
 
-function sendMail( user_data ) {
+function sendMail ( user_data ) {
 	
-	send_mail( aa.inst.aa_inst_id, user_data );
+	send_mail( aa.inst.aa_inst_id, user_data, sendMailCallback );
 	
 }
 
+/**
+ * @param response The response from the send_mail module.
+ */
+function sendMailCallback ( response ) {
+	
+	enableForm( '#contact-form' );
+	
+}
 
 /**
  * This object is used to define the rules,
