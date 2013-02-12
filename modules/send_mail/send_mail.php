@@ -36,6 +36,12 @@ if ( isset( $aa['config']['contactform_email_body']['value'] ) )
 $mail = new SendMail($smtp_config, $_GET['aa_inst_id'], $customer, $user_data);
 $ret = $mail->send_email($email);
 
+if ( $ret !== true ) {
+	echo json_encode( array( 'error' => 'mail not sent' ) );
+} else {
+	echo json_encode( array( 'success' => 'mail was sent' ) );
+}
+
 /*if($ret == true) {
    var_dump($ret);
 } else {

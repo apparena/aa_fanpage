@@ -20,5 +20,9 @@ function send_mail(aa_inst_id, user_data, callback) {
 		if ( typeof( callback ) == 'function' ) {
 			callback( response );
 		}
-	}, 'json');
+	}, 'json').fail(function() {
+		if ( typeof( callback ) == 'function' ) {
+			callback( {error: 'mail not sent'} );
+		}
+	});
 }
