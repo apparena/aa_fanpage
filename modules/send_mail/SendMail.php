@@ -38,8 +38,8 @@ class SendMail {
 			$this->aa_inst_id = $aa_inst_id; 
 		
 		$sender = array(
-			'mail' => $user_data['email'],
-			'name' => $user_data['firstname'] . ' ' . $user_data['lastname']
+			'mail' => $user['email'],
+			'name' => $user['firstname'] . ' ' . $user['lastname']
 		);
 		
 		$this->user = $user;

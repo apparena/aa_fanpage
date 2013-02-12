@@ -17,6 +17,8 @@ if ( isset( $_POST[ 'user_data' ] ) ) {
 	exit( 0 );
 }
 
+$customer = array();
+
 /* Use App-Manager variables to send out the email */
 if ( isset( $session->config['wizard_email']['value'] ) )
 	$customer['email'] = $session->config['wizard_email']['value'];
@@ -24,8 +26,8 @@ if ( isset( $session->config['wizard_email']['value'] ) )
 if ( isset( $session->config['wizard_company_name']['value'] ) )
 	$customer['name'] = $session->config['wizard_company_name']['value'];
 
-if ( isset( $session->config['email_subject']['value'] ) )
-	$email['subject'] = $session->config['email_subject']['value'];
+if ( isset( $session->config['contactform_email_subject']['value'] ) )
+	$email['subject'] = $session->config['contactform_email_subject']['value'];
 
 if ( isset( $session->config['email_body']['value'] ) )
 	$email['body'] = $session->config['email_body']['value'];
