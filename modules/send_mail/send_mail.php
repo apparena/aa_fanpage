@@ -29,8 +29,8 @@ if ( isset( $aa['config']['wizard_company_name']['value'] ) )
 if ( isset( $aa['config']['contactform_email_subject']['value'] ) )
 	$email['subject'] = $aa['config']['contactform_email_subject']['value'];
 
-if ( isset( $aa['config']['email_body']['value'] ) )
-	$email['body'] = $aa['config']['email_body']['value'];
+if ( isset( $aa['config']['contactform_email_body']['value'] ) )
+	$email['body'] = $aa['config']['contactform_email_body']['value'];
 
 // Init newsletter object and send email
 $mail = new SendMail($smtp_config, $_GET['aa_inst_id'], $customer, $user_data);
