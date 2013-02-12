@@ -91,11 +91,11 @@ function initValidation () {
             required: aa.t.validation_enter_email,
             email: aa.t.validation_email_invalid
         },
-        first_name: {
+        firstname: {
             required: aa.t.validation_enter_first_name,
             minlength: aa.t.validation_first_name_min.replace( '%s', '{0}' )
         },
-        last_name: {
+        lastname: {
             required: aa.t.validation_enter_last_name,
             minlength: aa.t.validation_last_name_min.replace( '%s', '{0}' )
         }

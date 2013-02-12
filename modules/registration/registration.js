@@ -46,11 +46,11 @@ $.register_bootstrap_form = {
             required:true,
             email:true
         },
-        first_name:{
+        firstname:{
             required:true,
             minlength: 3
         },
-        last_name:{
+        lastname:{
             required:true,
             minlength: 3
         }
