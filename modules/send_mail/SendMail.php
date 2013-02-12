@@ -2,7 +2,7 @@
 require_once( 'Zend/Mail.php' );
 require_once( 'Zend/Mail/Transport/Smtp.php' );
 
-class Newsletter {
+class SendMail {
 
 	private $smtp_host = "localhost";
 	private $smtp_port = 587;
