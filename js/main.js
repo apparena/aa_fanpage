@@ -8,7 +8,7 @@ require.config({
         facebook:'//connect.facebook.net/de_DE/all',
         galleria:'libs/galleria/galleria-1.2.9.min',
         script:'script',
-        validation:   '//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.10.0/jquery.validate.min',
+        validation:'//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.10.0/jquery.validate.min'
     },
     shim:{ // load required non AMD modules here...
         jquery:{
