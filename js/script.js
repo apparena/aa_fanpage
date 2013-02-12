@@ -116,7 +116,7 @@ function initValidation () {
                 required:required,
                 minlength:3
             },
-            housenumber:{
+            nr:{
                 required:required,
                 minlength:1
             },
@@ -138,7 +138,7 @@ function initValidation () {
                 required: aa.t.validation_enter_street,
                 minlength: aa.t.validation_street_minlength.replace( '%s', '{0}' )
             },
-            housenumber:{
+            nr:{
                 required: aa.t.validation_enter_housenumber,
                 minlength: aa.t.validation_housenumber_minlength.replace( '%s', '{0}' )
             },

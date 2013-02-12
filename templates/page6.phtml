@@ -26,31 +26,31 @@ if ( in_array("6",$pages ) ){
             <div class="row">
                 <div class="control-group span2">
                     <label><?php __p('gender'); ?></label>
-                    <select class="span2">
+                    <select class="span2" id="gender" name="gender">
                         <option><?php __p('male'); ?></option>
                         <option><?php __p('female'); ?></option>
                     </select>
                 </div>
                 <div class="control-group span3">
                     <label><?php __p('firstname'); ?></label>
-                    <input type="text" id="firstname" placeholder="<?php __p('firstname'); ?>" class="required span3">
+                    <input type="text" id="firstname" name="firstname" placeholder="<?php __p('firstname'); ?>" class="required span3">
                 </div>
                 <div class="control-group span3">
                     <label><?php __p('lastname'); ?></label>
-                    <input type="text" id="lastname" placeholder="<?php __p('lastname'); ?>" class="required span3">
+                    <input type="text" id="lastname" name="lastname" placeholder="<?php __p('lastname'); ?>" class="required span3">
                 </div>
             </div>
             <div class="row">
                 <div class="control-group span4">
                     <label><?php __p('email'); ?></label>
                     <div class="input-prepend">
-                        <input class="span4 required email" placeholder="<?php __p('email'); ?>" id="email" type="text">
+                        <input class="span4 required email" name="email" placeholder="<?php __p('email'); ?>" id="email" type="text">
                     </div>
                 </div>
                 <div class="control-group span4">
                     <label>&nbsp;</label>
                     <label class="checkbox">
-                        <input type="checkbox" id="newsletter_registration" value="1">
+                        <input type="checkbox" id="newsletter_registration" name="newsletter_registration"value="1">
                         <?php __p('newsletter_registration'); ?>
                     </label>
                 </div>
@@ -67,28 +67,28 @@ if ( in_array("6",$pages ) ){
 	            <div class="row address-item">
 	                <div class="control-group span6">
 	                    <label><?php __p('street'); ?></label>
-	                    <input type="text" id="street" placeholder="<?php __p('street'); ?>" class="<?php echo $required; ?>span6">
+	                    <input type="text" id="street" name="street" placeholder="<?php __p('street'); ?>" class="<?php echo $required; ?>span6">
 	                </div>
 	                <div class="control-group span2">
 	                    <label><?php __p('nr'); ?></label>
-	                    <input type="text" id="nr" placeholder="<?php __p('nr'); ?>" class="<?php echo $required; ?>span2">
+	                    <input type="text" id="nr" name="nr" placeholder="<?php __p('nr'); ?>" class="<?php echo $required; ?>span2">
 	                </div>
 	            </div>
 	            <div class="row address-item">
 	                <div class="control-group span2">
 	                    <label><?php __p('zip'); ?></label>
-	                    <input type="text" id="zip" placeholder="<?php __p('zip'); ?>" class="<?php echo $required; ?>span2">
+	                    <input type="text" id="zip" name="zip" placeholder="<?php __p('zip'); ?>" class="<?php echo $required; ?>span2">
 	                </div>
 	                <div class="control-group span6">
 	                    <label><?php __p('city'); ?></label>
-	                    <input type="text" id="city" placeholder="<?php __p('city'); ?>" class="<?php echo $required; ?>span6">
+	                    <input type="text" id="city" name="city" placeholder="<?php __p('city'); ?>" class="<?php echo $required; ?>span6">
 	                </div>
 	            </div>
 	        <?php } // end if show address fields ?>
             <div class="row">
                 <div class="control-group span2">
                     <label><?php __p('your_request'); ?></label>
-                    <select class="span2">
+                    <select class="span2" id="request" name="request">
                         <?php
                         $requests = explode( ",", $aa['config']['form_requests']['value'] );
                         foreach ($requests as $request ) {?>
@@ -98,13 +98,13 @@ if ( in_array("6",$pages ) ){
                 </div>
                 <div class="control-group span6">
                     <label><?php __p('subject'); ?></label>
-                    <input type="text" id="subject" placeholder="<?php __p('subject'); ?>" class="required span6">
+                    <input type="text" id="subject" name="subject" placeholder="<?php __p('subject'); ?>" class="required span6">
                 </div>
             </div>
             <div class="row">
                 <div class="control-group span2">
                     <label><?php __p('message'); ?></label>
-                    <textarea rows="8" class="span8" id="message"></textarea>
+                    <textarea rows="8" class="span8" id="message" name="message"></textarea>
                 </div>
             </div>
             <div class="form-actions">
