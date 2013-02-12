@@ -103,6 +103,7 @@ function initValidation () {
     };
     $.register_bootstrap_form.messages = $.extend( $.register_bootstrap_form.messages, messages );
 
+    var address_validation = {};
     // create address fields validation
     if ( typeof( aa.conf.custom_field_address_active.value ) != 'undefined' && aa.conf.custom_field_address_active.value == '1' ) {
 
@@ -110,27 +111,28 @@ function initValidation () {
         var required = false;
         if ( typeof( aa.conf.custom_field_address_required.value ) != 'undefined' && aa.conf.custom_field_address_required.value == '1' ) {
             required = true;
+        
+	        address_validation = {
+	            street:{
+	                required:required,
+	                minlength:3
+	            },
+	            nr:{
+	                required:required,
+	                minlength:1
+	            },
+	            zip:{
+	                required:required,
+	                minlength:5,
+	                maxlength:5,
+	                number: true
+	            },
+	            city:{
+	                required:required,
+	                minlength:3
+	            }
+	        };
         }
-        var address_validation = {
-            street:{
-                required:required,
-                minlength:3
-            },
-            nr:{
-                required:required,
-                minlength:1
-            },
-            zip:{
-                required:required,
-                minlength:5,
-                maxlength:5,
-                number: true
-            },
-            city:{
-                required:required,
-                minlength:3
-            }
-        };
         
         messages = {
 
