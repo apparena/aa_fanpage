@@ -110,6 +110,14 @@ function sendMailCallback ( response ) {
 	
 	enableForm( '#contact-form' );
 	
+	if ( typeof( response ) != 'undefined' ) {
+		if ( typeof( response.error ) != 'undefined' ) {
+			showMsg( aa.t.mail_send_error );
+		} else {
+			showMsg( aa.t.mail_send_success, 'alert-success' );
+		}
+	}
+	
 }
 
 /**
@@ -390,6 +398,32 @@ function enableForm ( selector ) {
 	$( selector ).find( 'button' ).each( function(index) {
 		$(this).removeAttr( 'disabled' );
 	});
+}
+
+function showMsg( message, option ) {
+	
+	alert_close = '<button type="button" class="close" onclick="closeMsg();">x</button>';
+	
+	if ( typeof( option ) == 'undefined' ) {
+		option = 'alert-error';
+	}
+	
+	$("#msg-container")
+		.slideUp(500)
+		.removeClass()
+		.addClass("alert fade in")
+		.addClass( option )
+		.html(alert_close + message)
+		.slideDown(500);
+	
+	$('.alert').alert();
+
+}
+
+function closeMsg() {
+	$("#msg-container")
+		.slideUp(500)
+		.html( ' ' );
 }
 
 /**
