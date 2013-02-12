@@ -4,14 +4,15 @@ require_once( 'Zend/Mail/Transport/Smtp.php' );
 
 class Newsletter {
 
-	private $db; // DB connection
 	private $smtp_host = "localhost";
 	private $smtp_port = 587;
 	private $smtp_user = "none";
 	private $smtp_pass = "none";
-	private $sender_name = "";
-	private $sender_email = "";
+	private $customer_name = "";
+	private $customer_email = "";
 	private $aa_inst_id;
+	private $customer;
+	private $user;
 	
 	/**
 	 * Initializes a Mail object to send out a mail.
@@ -19,7 +20,7 @@ class Newsletter {
 	 * @param int $aa_inst_id App Arena Instance Id
 	 * @param array $sender Email sender data: (name, email) of the user who sent the form
 	 */
-	function __construct($smtp=array(), $aa_inst_id=0, $sender=array()) {
+	function __construct($smtp=array(), $aa_inst_id=0, $customer=array(), $user = array()) {
 		
 		if (array_key_exists('host', $smtp))
 			$this->smtp_host = $smtp['host'];
@@ -36,6 +37,14 @@ class Newsletter {
 		if ($aa_inst_id != 0)
 			$this->aa_inst_id = $aa_inst_id; 
 		
+		$sender = array(
+			'mail' => $user_data['email'],
+			'name' => $user_data['firstname'] . ' ' . $user_data['lastname']
+		);
+		
+		$this->user = $user;
+		$this->customer = $customer;
+		
 		$this->set_sender($sender);
 	}
 
@@ -45,9 +54,7 @@ class Newsletter {
 	 * @param array $email (subject, body) The email content templates.
 	 * @return boolean Returns if email could be sent out or not.
 	 */
-	function send_email($receiver=array(), $email=array()) {
-		
-		$str_receiver = base64_encode(json_encode($receiver));
+	function send_email($email=array()) {
 		
 		// Get email content
 		if (array_key_exists('body', $email))
@@ -57,16 +64,27 @@ class Newsletter {
 			$email_subject = $email['subject'];
 		else $email_subject = "";
 		
-		// Get receiver data
-		if (array_key_exists('name', $receiver))
-			$receiver_name = $receiver['name'];
+		// Get receiver data (the customer gets the mail from the contact form, the user is the sender)
+		if (array_key_exists('name', $this->customer))
+			$receiver_name = $this->customer['name'];
 		else $receiver_name = "";
-		if (array_key_exists('email', $receiver))
-			$receiver_email = $receiver['email'];
+		if (array_key_exists('email', $this->customer))
+			$receiver_email = $this->customer['email'];
 		else $receiver_email = "";
 		
 		// Replace variables in Email-text
-		$email_body = str_replace("{{name}}", $receiver_name, $email_body);
+		$email_body = str_replace("{{name}}", $this->user['firstname'] . ' ' . $this->user['lastname'], $email_body);
+		
+		$data = array();
+		foreach( $this->user as $key => $value ) {
+			if ( $key != 'firstname' && $key != 'lastname' ) {
+				$data[] = __t( $key ) . ': ' . $value;
+			}
+		}
+		
+		$data = implode( '<br />', $data );
+		
+		$email_body = str_replace("{{userdata}}", $data, $email_body);
 
 		// Setup Zend SMTP server
 		$smtp_config = array(
@@ -80,8 +98,8 @@ class Newsletter {
 
 		$mail = new Zend_Mail('UTF-8');
 		$mail->setBodyHtml($email_body);
-		$mail->setFrom($this->sender_email, $this->sender_name);
-		$mail->addTo($receiver_email, $receiver_name);
+		$mail->setFrom($this->user['email'], $this->user['firstname'] . ' ' . $this->user['lastname']);
+		$mail->addTo($this->customer['email'], $this->customer['name']);
 		$mail->setSubject($email_subject);
 
 		try{
@@ -105,7 +123,7 @@ class Newsletter {
 			$this->sender_name = $sender['name'];
 		
 		if (array_key_exists('email', $sender))
-			$this->sender_email = $sender['email'];;
+			$this->sender_email = $sender['email'];
 	}
 	
 	
