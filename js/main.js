@@ -8,7 +8,8 @@ require.config({
         facebook:'//connect.facebook.net/de_DE/all',
         galleria:'libs/galleria/galleria-1.2.9.min',
         script:'script',
-        validation:'//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.10.0/jquery.validate.min'
+        validation:'//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.10.0/jquery.validate.min',
+        send_mail:'../modules/send_mail/send_mail'
     },
     shim:{ // load required non AMD modules here...
         jquery:{
@@ -28,6 +29,9 @@ require.config({
         },
         validation:{
             deps:[ 'jquery' ]
+        },
+        send_mail:{
+        	deps:[ 'jquery' ]
         }
     }
 });
@@ -39,8 +43,9 @@ require([
     'bootstrap',
     'galleria',
     'script',
-    'validation'
-], function (FB, bootstrap, galleria, script, validation) {
+    'validation',
+    'send_mail'
+], function (FB, bootstrap, galleria, script, validation, send_mail) {
 
     FB.init({
         appId:aa.inst.fb_app_id, // App ID

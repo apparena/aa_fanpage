@@ -87,8 +87,16 @@ function sendForm() {
     if ( isValid ) {
     	disableForm( '#contact-form' );
         var user_data = $( '#contact-form' ).serializeObject();
+        sendMail( user_data );
     }
     
+}
+
+
+function sendMail( user_data ) {
+	
+	send_mail( aa_inst_id, user_data );
+	
 }
 
 
