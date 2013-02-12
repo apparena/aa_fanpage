@@ -95,7 +95,7 @@ function sendForm() {
 
 function sendMail( user_data ) {
 	
-	send_mail( aa_inst_id, user_data );
+	send_mail( aa.inst.aa_inst_id, user_data );
 	
 }
 
