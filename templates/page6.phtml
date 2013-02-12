@@ -137,11 +137,7 @@ $(document).ready( function () {
 	$( '#contact-form' ).validate( $.register_bootstrap_form );
 	$.validator.setDefaults( $.register_bootstrap_form );
 	$( '#sendMessage' ).click( function () {
-		var isValid = $('#contact-form').valid();
-        if ( isValid ) {
-        	disableForm( '#contact-form' );
-            var user_data = $( '#contact-form' ).serializeObject();
-        }
+		sendForm();
 	});
 });
 </script>

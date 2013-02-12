@@ -81,6 +81,17 @@ function show_admin_info() {
 }
 
 
+function sendForm() {
+	
+	var isValid = $('#contact-form').valid();
+    if ( isValid ) {
+    	disableForm( '#contact-form' );
+        var user_data = $( '#contact-form' ).serializeObject();
+    }
+    
+}
+
+
 /**
  * This object is used to define the rules,
  * messages and functionalities of the validation.
@@ -284,10 +295,10 @@ function disableForm ( selector ) {
 	$( selector ).find( 'select' ).each( function(index) {
 		$(this).attr( 'disabled', 'disabled' );
 	});
-	formelement.find( 'input' ).each( function(index) {
+	$( selector ).find( 'input' ).each( function(index) {
 		$(this).attr( 'disabled', 'disabled' );
 	});
-	formelement.find( 'button' ).each( function(index) {
+	$( selector ).find( 'button' ).each( function(index) {
 		$(this).attr( 'disabled', 'disabled' );
 	});
 }
