@@ -278,10 +278,10 @@ function initValidation () {
 
 /**
  * Disables all form elements in a certain area.
- * @param {String} formelement the selector for the area to disable.
+ * @param {String} selector the selector for the area to disable.
  */
-function disableForm ( formelement ) {
-	formelement.find( 'select' ).each( function(index) {
+function disableForm ( selector ) {
+	$( selector ).find( 'select' ).each( function(index) {
 		$(this).attr( 'disabled', 'disabled' );
 	});
 	formelement.find( 'input' ).each( function(index) {
@@ -294,16 +294,16 @@ function disableForm ( formelement ) {
 
 /**
  * Enables all form elements in a certain area.
- * @param {String} formelement The selector for the area to disable.
+ * @param {String} selector The selector for the area to disable.
  */
-function enableForm ( formelement ) {
-	formelement.find( 'select' ).each( function(index) {
+function enableForm ( selector ) {
+	$( selector ).find( 'select' ).each( function(index) {
 		$(this).removeAttr( 'disabled' );
 	});
-	formelement.find( 'input' ).each( function(index) {
+	$( selector ).find( 'input' ).each( function(index) {
 		$(this).removeAttr( 'disabled' );
 	});
-	formelement.find( 'button' ).each( function(index) {
+	$( selector ).find( 'button' ).each( function(index) {
 		$(this).removeAttr( 'disabled' );
 	});
 }
