@@ -86,7 +86,6 @@ function show_admin_info() {
  * Set translations and rules.
  */
 function initValidation () {
-	var aa_data = {};
     var messages = {
     	email: {
             required: aa.t.validation_enter_email,
@@ -133,9 +132,7 @@ function initValidation () {
 	            }
 	        };
         }
-        
         messages = {
-
         	street:{
                 required: aa.t.validation_enter_street,
                 minlength: aa.t.validation_street_minlength.replace( '%s', '{0}' )
@@ -154,14 +151,15 @@ function initValidation () {
                 required:aa.t.validation_enter_city,
                 minlength:aa.t.validation_city_not_valid.replace( '%s', '{0}' )
             }
-
         };
-        
         $.register_bootstrap_form.rules = $.extend($.register_bootstrap_form.rules, address_validation);
         $.register_bootstrap_form.messages = $.extend($.register_bootstrap_form.messages, messages);
         
 
     } // end add address field if activated
+    
+    
+    
 }
 
 
