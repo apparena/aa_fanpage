@@ -110,13 +110,17 @@ function sendMailCallback ( response ) {
 	
 	enableForm( '#contact-form' );
 	
-	if ( typeof( response ) != 'undefined' ) {
-		if ( typeof( response.error ) != 'undefined' ) {
-			showMsg( aa.t.mail_send_error );
-		} else {
-			showMsg( aa.t.mail_send_success, 'alert-success' );
+	$( '#contact-form-container' ).fadeOut(500, function(){
+		if ( typeof( response ) != 'undefined' ) {
+			if ( typeof( response.error ) != 'undefined' ) {
+				$( '#contact-form-container' ).html( '<div class="alert alert-error">' + aa.t.mail_send_error + '</div>' ).fadeIn( 500 );
+//				showMsg( aa.t.mail_send_error );
+			} else {
+				$( '#contact-form-container' ).html( '<div class="alert alert-success">' + aa.t.mail_send_success + '</div>' ).fadeIn( 500 );
+//				showMsg( aa.t.mail_send_success, 'alert-success' );
+			}
 		}
-	}
+	});
 	
 }
 
