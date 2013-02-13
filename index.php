@@ -164,7 +164,7 @@ $menu = explode(",", $aa['config']['menu_order']['value']);
         </div>
 
         <div class="fb-like-button">
-            <div class="fb-like" data-href="<?=$aa['fb']['share_url'];?>" data-send="false" data-layout="button_count"
+            <div class="fb-like" data-href="<?=$aa['instance']['fb_page_url'];?>" data-send="false" data-layout="button_count"
                  data-width="140" data-show-faces="false"></div>
         </div>
 
