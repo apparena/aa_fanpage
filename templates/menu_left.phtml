@@ -7,6 +7,7 @@ $menu = explode(",", $aa['config']['menu_order']['value']);
         <?php
         // Generate menu
         foreach ( $menu as $item ) {
+            $item = trim($item);
             if ( $item == "1" ) {
                 $template = "index.phtml";
                 $showItem = true;
