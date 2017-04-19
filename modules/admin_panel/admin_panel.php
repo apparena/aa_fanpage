@@ -20,12 +20,12 @@ if (is_fb_user_admin()) { ?>
 </script>
 
 <div class="adminpanel hide">
-    <div id="adminpanel_header"><h3><? __p('admin_panel') ?></h3></div>
-    <? require_once dirname(__FILE__) . '/admin.php'; ?>
+    <div id="adminpanel_header"><h3><?php __p('admin_panel') ?></h3></div>
+    <?php require_once dirname(__FILE__) . '/admin.php'; ?>
 </div>
 <span class="admin_banner">
 <div id="admin_panel_button" class="clickable" onclick="admin_panel_open()"><i
-        class="icon-cog"></i>&nbsp;<? __p('admin_panel')?>&nbsp;<i id="arrow" class="icon-chevron-down"></i></div>
+        class="icon-cog"></i>&nbsp;<?php __p('admin_panel')?>&nbsp;<i id="arrow" class="icon-chevron-down"></i></div>
 </span>
 <div style="clear:both"></div>
-<? } ?>
+<?php } ?>

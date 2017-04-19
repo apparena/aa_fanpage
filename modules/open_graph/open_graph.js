@@ -57,11 +57,11 @@ function postToGraph(namespace, object_name, action, object_url, callback) {
 
 }
 
-function open_graph_post(action, object, aa_inst_id, fb_app_url, fb_canvas_url, answer, callback) {
+function open_graph_post(action, object, i_id, fb_app_url, fb_canvas_url, answer, callback) {
 
     var mObject = {};
-    mObject[object] = 'https://apps.facebook.com/' + fb_app_url + '/modules/open_graph/object.php?aa_inst_id=' + aa_inst_id + '&answer=' + answer;
-    mObject['aa_inst_id'] = aa_inst_id;
+    mObject[object] = 'https://apps.facebook.com/' + fb_app_url + '/modules/open_graph/object.php?i_id=' + i_id + '&answer=' + answer;
+    mObject['i_id'] = i_id;
     mObject['answer'] = answer;
     mObject['object'] = object;
     FB.api(

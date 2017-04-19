@@ -1,8 +1,8 @@
 <?php
 
-$aa_inst_id = 0;
-if (isset($_GET['aa_inst_id'])) {
-    $aa_inst_id = $_GET['aa_inst_id'];
+$i_id = 0;
+if (isset($_GET['i_id'])) {
+    $i_id = $_GET['i_id'];
 }
 
 include 'init_objects.php';

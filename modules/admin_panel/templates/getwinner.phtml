@@ -1,6 +1,6 @@
 <?php
-if (isset($_GET['aa_inst_id'])) {
-    $aa_inst_id = $_GET['aa_inst_id'];
+if (isset($_GET['i_id'])) {
+    $i_id = $_GET['i_id'];
     /*********************************************************************************
      * The GET parameter will be transferred to the init_session.php automatically!! *
      *********************************************************************************/
@@ -15,7 +15,7 @@ if (isset($_GET['aa_inst_id'])) {
     <div class="page-header">
         <h1><?=__p("Select winner");?></h1>
     </div>
-    <form name="Formular" action="admin_get_winner.php?aa_inst_id=<?php echo $aa_inst_id; ?>" id="form_export"
+    <form name="Formular" action="admin_get_winner.php?i_id=<?php echo $i_id; ?>" id="form_export"
           method="POST" target="_self" onsubmit="return chkFormular()" class="form-horizontal">
         <fieldset>
             <legend><?php __p("Date Range for export")?></legend>
@@ -108,7 +108,7 @@ if (isset($_GET['aa_inst_id'])) {
         }
 
 
-        var aa_inst_id = '<?php echo $aa_inst_id; ?>';
+        var i_id = '<?php echo $i_id; ?>';
 
         var url = "ajax.php";
         var data = {
@@ -116,8 +116,8 @@ if (isset($_GET['aa_inst_id'])) {
             to:to,
             winners:winners,
             action:'get_winner',
-            aa_inst_id:aa_inst_id,
-            aa_inst_id:aa_inst_id,
+            i_id:i_id,
+            i_id:i_id,
         };
 
         show_loading();

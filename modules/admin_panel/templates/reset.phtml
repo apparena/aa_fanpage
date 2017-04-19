@@ -1,7 +1,7 @@
 <?php
 include_once ('/../../init.php');
 $db = getDb();
-$aa_inst_id = $aa['instance']['aa_inst_id'];
+$i_id = $aa['instance']['i_id'];
 
 /************************************************************
  * get saved days for app reset from db @ table app_config. *
@@ -17,7 +17,7 @@ $config_keys[5] = 'saturday';
 $config_keys[6] = 'sunday';
 
 // get all config vars according to this instance
-$sql = "SELECT * FROM `app_config` WHERE `aa_inst_id` = '" . $aa_inst_id . "'";
+$sql = "SELECT * FROM `app_config` WHERE `i_id` = '" . $i_id . "'";
 try {
     $result = $db->fetchAll($sql);
 } catch (Exception $e) {
@@ -130,39 +130,39 @@ if (!$session->fb['is_admin']) {
                 <div class="controls">
                     <label class="checkbox">
                         <input value="1" id="check_monday" Name="check_monday" type="checkbox"
-                               title="<?=__p("Monday");?>" <? if ($checkedDays['monday'] == 1) { ?>checked<? }?>/>
+                               title="<?=__p("Monday");?>" <?php if ($checkedDays['monday'] == 1) { ?>checked<?php }?>/>
                         <?=__p("Monday");?>
                     </label>
                     <label class="checkbox">
                         <input value="1" id="check_tuesday" Name="check_tuesday" type="checkbox"
-                               title="<?=__p("Tuesday");?>" <? if ($checkedDays['tuesday'] == 1) { ?> checked <? }?>/>
+                               title="<?=__p("Tuesday");?>" <?php if ($checkedDays['tuesday'] == 1) { ?> checked <?php }?>/>
                         <?=__p("Tuesday");?>
                     </label>
                     <label class="checkbox">
                         <input value="1" id="check_wednesday" Name="check_wednesday" type="checkbox"
-                               title="<?=__p("Wednesday");?>" <? if ($checkedDays['wednesday'] == 1) { ?>
-                               checked <? }?> />
+                               title="<?=__p("Wednesday");?>" <?php if ($checkedDays['wednesday'] == 1) { ?>
+                               checked <?php }?> />
                         <?=__p("Wednesday");?>
                     </label>
                     <label class="checkbox">
                         <input value="1" id="check_thursday" Name="check_thursday" type="checkbox"
-                               title="<?=__p("Thursday");?>" <? if ($checkedDays['thursday'] == 1) { ?>
-                               checked <? }?> />
+                               title="<?=__p("Thursday");?>" <?php if ($checkedDays['thursday'] == 1) { ?>
+                               checked <?php }?> />
                         <?=__p("Thursday");?>
                     </label>
                     <label class="checkbox">
                         <input value="1" id="check_friday" Name="check_friday" type="checkbox"
-                               title="<?=__p("Friday");?>" <? if ($checkedDays['friday'] == 1) { ?> checked <? }?> />
+                               title="<?=__p("Friday");?>" <?php if ($checkedDays['friday'] == 1) { ?> checked <?php }?> />
                         <?=__p("Friday");?>
                     </label>
                     <label class="checkbox">
                         <input value="1" id="check_saturday" Name="check_saturday" type="checkbox"
-                               title="<?=__p("Saturday");?>"<? if ($checkedDays['saturday'] == 1) { ?> checked <? }?> />
+                               title="<?=__p("Saturday");?>"<?php if ($checkedDays['saturday'] == 1) { ?> checked <?php }?> />
                         <?=__p("Saturday");?>
                     </label>
                     <label class="checkbox">
                         <input value="1" id="check_sunday" Name="check_sunday" type="checkbox"
-                               title="<?=__p("Sunday");?>"<? if ($checkedDays['sunday'] == 1) { ?> checked <? }?> />
+                               title="<?=__p("Sunday");?>"<?php if ($checkedDays['sunday'] == 1) { ?> checked <?php }?> />
                         <?=__p("Sunday");?>
                     </label>
 
@@ -239,7 +239,7 @@ if (!$session->fb['is_admin']) {
             async:true,
             url:'ajax/store_weekdays.php',
             data:({
-                aa_inst_id:'<?=$aa['instance']['aa_inst_id']?>',
+                i_id:'<?=$aa['instance']['i_id']?>',
                 monday:$('#check_monday:checked').val(),
                 tuesday:$('#check_tuesday:checked').val(),
                 wednesday:$('#check_wednesday:checked').val(),
@@ -280,7 +280,7 @@ if (!$session->fb['is_admin']) {
             async:true,
             url:'ajax/resetRound.php',
             data:({
-                aa_inst_id:'<?=$aa['instance']['aa_inst_id']?>'
+                i_id:'<?=$aa['instance']['i_id']?>'
             }),
             /*****************************************************************
              * this function gets executed when the ajax call above returns. *

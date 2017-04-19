@@ -33,7 +33,7 @@ if ( isset( $aa['config']['contactform_email_body']['value'] ) )
 	$email['body'] = $aa['config']['contactform_email_body']['value'];
 
 // Init newsletter object and send email
-$mail = new SendMail($smtp_config, $_GET['aa_inst_id'], $customer, $user_data);
+$mail = new SendMail($smtp_config, $_GET['i_id'], $customer, $user_data);
 $ret = $mail->send_email($email);
 
 if ( $ret !== true ) {

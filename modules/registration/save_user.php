@@ -13,11 +13,11 @@
 	
     include_once ( '../../init.php' );
 
-    $aa_inst_id = 0;
-    if ( isset( $_GET[ 'aa_inst_id' ] ) ) {
-    	$aa_inst_id = $_GET[ 'aa_inst_id' ];
+    $i_id = 0;
+    if ( isset( $_GET[ 'i_id' ] ) ) {
+    	$i_id = $_GET[ 'i_id' ];
     } else {
-    	echo json_encode( array( 'error' => 'missing aa_inst_id' ) );
+    	echo json_encode( array( 'error' => 'missing i_id' ) );
     	exit( 0 );
     }
 

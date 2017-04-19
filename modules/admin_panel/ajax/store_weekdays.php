@@ -1,14 +1,14 @@
 <?php
-$aa_inst_id = 0;
-if (isset($_POST['aa_inst_id'])) {
-    $aa_inst_id = $_POST['aa_inst_id'];
-} else if (isset($aa['instance']['aa_inst_id'])) {
-    $aa_inst_id = $aa['instance']['aa_inst_id'];
+$i_id = 0;
+if (isset($_POST['i_id'])) {
+    $i_id = $_POST['i_id'];
+} else if (isset($aa['instance']['i_id'])) {
+    $i_id = $aa['instance']['i_id'];
 } else {
     echo "invalid session! exiting...";
     exit(0);
 }
-$_GET['aa_inst_id'] = $aa_inst_id;
+$_GET['i_id'] = $i_id;
 include_once(dirname(__FILE__) . '/../../init.php');
 
 $db = getDb();
@@ -54,7 +54,7 @@ else
 /****************************************************************
  * first get the saved weekdays for this instance if available. *
  ****************************************************************/
-$sql = "SELECT * FROM `app_config` WHERE `aa_inst_id` = '" . $aa_inst_id . "'";
+$sql = "SELECT * FROM `app_config` WHERE `i_id` = '" . $i_id . "'";
 
 //echo $sql."<br />";
 
@@ -115,7 +115,7 @@ if ($hasWeekdays == false) {
         /*******************************************
          * set the fields for inserting a weekday. *
          *******************************************/
-        $fields = "`aa_inst_id` = '" . $aa_inst_id . "', " .
+        $fields = "`i_id` = '" . $i_id . "', " .
             " `config_key` = '" . $config_keys[$index] . "', " .
             " `config_value` = '" . $config_values[$index] . "'";
 
@@ -151,12 +151,12 @@ if ($hasWeekdays == false) {
         /******************************************
          * set the fields for updating a weekday. *
          ******************************************/
-        $fields = "`aa_inst_id` = '" . $aa_inst_id . "', " .
+        $fields = "`i_id` = '" . $i_id . "', " .
             " `config_key` = '" . $config_keys[$index] . "', " .
             " `config_value` = '" . $config_values[$index] . "'";
 
         // update a weekday
-        $sql = "UPDATE `app_config` SET " . $fields . " WHERE `aa_inst_id` = " . $aa_inst_id . " AND `config_key` = '" . $config_keys[$index] . "'";
+        $sql = "UPDATE `app_config` SET " . $fields . " WHERE `i_id` = " . $i_id . " AND `config_key` = '" . $config_keys[$index] . "'";
 
 //echo $sql."<br />";
 

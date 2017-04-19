@@ -102,7 +102,7 @@ if (isset($_GET['p']) && $_GET['p'] != "")
          * Get aa vars for js. *
          ***********************/
         fb_app_id = '<?=$aa['instance']["fb_app_id"]?>';
-        aa_inst_id = '<?=$aa['instance']["aa_inst_id"]?>';
+        i_id = '<?=$aa['instance']["i_id"]?>';
         fb_canvas_url = '<?=$aa['instance']["fb_canvas_url"]?>';
 
         /**

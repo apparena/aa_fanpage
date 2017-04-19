@@ -5,7 +5,7 @@
  */
 function modal(template, modal_config, data) {
     var modal_folder = "templates/modals/";
-    $("#modal").load(modal_folder + template + "?aa_inst_id=" + aa_inst_id + data, function () {
+    $("#modal").load(modal_folder + template + "?i_id=" + i_id + data, function () {
         switch (auth_type) {
             case 'auth_facebook':
                 if (typeof(modal_config.first_name) != 'undefined') {

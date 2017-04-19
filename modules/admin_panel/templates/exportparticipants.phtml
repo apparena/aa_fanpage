@@ -1,6 +1,6 @@
 <?php
-if (isset($_GET['aa_inst_id'])) {
-    $aa_inst_id = $_GET['aa_inst_id'];
+if (isset($_GET['i_id'])) {
+    $i_id = $_GET['i_id'];
     /*********************************************************************************
      * The GET parameter will be transferred to the init_session.php automatically!! *
      *********************************************************************************/
@@ -16,7 +16,7 @@ if (isset($_GET['aa_inst_id'])) {
         <h1><?php __p("Export participants")?></h1>
     </div>
 
-    <form name="Formular" action="admin_export_download.php?aa_inst_id=<?php echo $aa_inst_id; ?>" id="form_export"
+    <form name="Formular" action="admin_export_download.php?i_id=<?php echo $i_id; ?>" id="form_export"
           method="POST" target="_self" onsubmit="return chkFormular()" class="form-horizontal">
         <fieldset>
             <legend><?php __p("Date Range for export")?></legend>
@@ -33,7 +33,7 @@ if (isset($_GET['aa_inst_id'])) {
                 </div>
             </div>
             <div class="control-group">
-                <div class="agreements"><? if ( isset( $aa['config']['admin_export_terms']['value'] ) ) echo $aa['config']['admin_export_terms']['value'];?></div>
+                <div class="agreements"><?php if ( isset( $aa['config']['admin_export_terms']['value'] ) ) echo $aa['config']['admin_export_terms']['value'];?></div>
                 <label class="checkbox">
                     <input type="checkbox"
                            name="akzeptiert"> <?php __p("I read and agree to all export terms & conditions")?>

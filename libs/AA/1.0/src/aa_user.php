@@ -11,16 +11,16 @@ class AA_User {
 	/**
 	 * Registers current users participation in database
 	 * @param String $username username or userid of facebook user whose data should be delivered
-	 * @param String $aa_inst_id App instance id
+	 * @param String $i_id App instance id
 	 * @param timestamp $date date for which the user should be registered
 	 * @return Successfully registered in DB
 	 */
-	public function save_user($user_id, $aa_inst_id, $date=0){
+	public function save_user($user_id, $i_id, $date=0){
 
-		if (!$this->isUserParticipating($user_id, $aa_inst_id)) {
+		if (!$this->isUserParticipating($user_id, $i_id)) {
 			// Register new participant, give him one ticket for participating
 			$sql = "INSERT INTO `app_participation`
-			SET `fb_user_id`='$user_id', `aa_inst_id`='$aa_inst_id', `ip`='" . $this->getClientIp() . "', `timestamp`='" . date('Y-m-d H:i:s', time()) . "'";
+			SET `fb_user_id`='$user_id', `i_id`='$i_id', `ip`='" . $this->getClientIp() . "', `timestamp`='" . date('Y-m-d H:i:s', time()) . "'";
 			$res = $this->db->query($sql);
 			return true;
 		}
@@ -30,14 +30,14 @@ class AA_User {
 	/**
 	 * Returns if the user is already participating in the Lottery or not
 	 * @param String $user_id Facebook user id
-	 * @param int $aa_inst_id instance id of the application
+	 * @param int $i_id instance id of the application
 	 * @param timestamp $min_date optional lower boundary for date
 	 * @param timestamp $max_date optional upper boundary for date
 	 * @return boolean Returns if the user is participating in the current Lottery
 	 */
-	public function is_user_participating($fb_user_id = 0, $aa_inst_id = 0, $min_date = 0, $max_date = 0) {
+	public function is_user_participating($fb_user_id = 0, $i_id = 0, $min_date = 0, $max_date = 0) {
 		$sql = "SELECT * FROM app_participation WHERE fb_user_id=" . $fb_user_id . 
-				" AND aa_inst_id=" . $aa_inst_id . " LIMIT 1";
+				" AND i_id=" . $i_id . " LIMIT 1";
 		
 		$result = $this->db->query($sql);
 		
@@ -47,17 +47,17 @@ class AA_User {
 			return false;
 		}
 		
-		// Check if user id and aa_inst_id are available
-		//if ($fb_user_id == false || intval($aa_inst_id) == 0)
+		// Check if user id and i_id are available
+		//if ($fb_user_id == false || intval($i_id) == 0)
 		//	return false;
 		
 		
 
 		// Check if a round reset was taking place
-		/*$round_reset_timestamp = $this->getRoundResetTimestamp($aa_inst_id);
+		/*$round_reset_timestamp = $this->getRoundResetTimestamp($i_id);
 		if (!$round_reset_timestamp){
 			$sql = "SELECT * FROM `app_participation` WHERE `fb_user_id`='$fb_user_id'
-			AND `aa_inst_id`='$aa_inst_id'";
+			AND `i_id`='$i_id'";
 			// Set date range in sql-query
 			if ($min_date <> 0)
 			{
@@ -71,7 +71,7 @@ class AA_User {
 			}
 		} else {
 			$sql = "SELECT * FROM `app_participation` WHERE `fb_user_id`='$fb_user_id'
-			AND `aa_inst_id`='$aa_inst_id'";
+			AND `i_id`='$i_id'";
 			// Set date range in sql-query
 			if ($min_date <> 0)
 			{
@@ -93,8 +93,8 @@ class AA_User {
 		return $row;*/
 	}
 
-	public function select_random_user($participantList, $aa_inst_id, $nr_of_winners = 1) {
-		$session = new Zend_Session_Namespace('aa_session_' . $this->aa_inst_id);
+	public function select_random_user($participantList, $i_id, $nr_of_winners = 1) {
+		$session = new Zend_Session_Namespace('aa_session_' . $this->i_id);
 		$winnerList = array(); // list of all participants incl. nr of their tickets
 		$winners = array(); // actual winners
 
@@ -107,7 +107,7 @@ class AA_User {
 		}
 
 		// Get number of tickets
-		$tickets = $this->getNrOfTickets($uids, $aa_inst_id, 0, array());
+		$tickets = $this->getNrOfTickets($uids, $i_id, 0, array());
 
 		$winner_max=count($participantList); //max amount of winners
 		$nr_of_winners=min($nr_of_winners,$winner_max); //reset nr of winners
@@ -189,19 +189,19 @@ class AA_User {
 
 	/**
 	 * Returns a user list in commited date range of a certain app instance.
-	 * @param int $aa_inst_id App Arena instance id
+	 * @param int $i_id App Arena instance id
 	 * @param $additionalColumns columns to add for the query
 	 * @param timestamp $min_date lower boundary for date filter of participants
 	 * @param timestamp $max_date upper boundary for date filter of participants
 	 * @return Array Participant list as array
 	 */
-	public function get_user_list($aa_inst_id, $min_date=0, $max_date=0) {
+	public function get_user_list($i_id, $min_date=0, $max_date=0) {
 		$participantList= Array();
 		//$sql = "SELECT `user_id`, `first_name`, `last_name`, `email`, `gender`, `timestamp`, `ip`, `newsletter_registration`, `tickets`
 		$sql = "SELECT `user_data`.`fb_user_id`, `first_name`, `last_name`, `email`, `gender` 
 				FROM `user_data` INNER JOIN `app_participation`
 				ON `user_data`.`fb_user_id`=`app_participation`.`fb_user_id`
-				WHERE `app_participation`.`aa_inst_id`='$aa_inst_id' ";
+				WHERE `app_participation`.`i_id`='$i_id' ";
 		if ($min_date <> 0)
 		{
 			$min_date=format_datetime($min_date);
@@ -218,19 +218,19 @@ class AA_User {
 
 	/**
 	 * Get the winners of this contest. Only users with correct answer(s) will be returned.
-	 * @param $aa_inst_id AA instance id
+	 * @param $i_id AA instance id
 	 * @param $additionalColumns columns to add for the query
 	 * @param $min_date lower boundary for date filter of participants
 	 * @param $max_date upper boundary for date filter of participants
 	 * @return Array winner list as an array
 	 */
-	public function get_random_user_list($aa_inst_id, $additionalColumns = "", $min_date=0, $max_date=0) {
+	public function get_random_user_list($i_id, $additionalColumns = "", $min_date=0, $max_date=0) {
 		$participantList= Array();
 		//$sql = "SELECT `user_id`, `first_name`, `last_name`, `email`, `gender`, `timestamp`, `ip`, `newsletter_registration`, `tickets`
 		$sql = "SELECT `user_data`.`fb_user_id`, `first_name`, `last_name`, `email`, `gender`" . $additionalColumns . "
 		FROM `user_data` INNER JOIN `app_participation`
 		ON `user_data`.`fb_user_id`=`app_participation`.`fb_user_id`
-		WHERE `app_participation`.`aa_inst_id`='$aa_inst_id'
+		WHERE `app_participation`.`i_id`='$i_id'
 		AND `app_participation`.`answers_correct`=1 ";
 		if ($min_date <> 0)
 		{

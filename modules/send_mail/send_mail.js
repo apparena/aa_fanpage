@@ -5,9 +5,9 @@
 /**
  * This functions send out the confirmation email
  */
-function send_mail(aa_inst_id, user_data, callback) {
+function send_mail(i_id, user_data, callback) {
 
-	var url = "modules/send_mail/send_mail.php?aa_inst_id=" + aa_inst_id;
+	var url = "modules/send_mail/send_mail.php?i_id=" + i_id;
 	jQuery.post(url, {user_data: user_data}, function(response) {
 		if ( typeof( response ) != 'undefined' ) {
 			if ( typeof( response.error ) != 'undefined' ) {

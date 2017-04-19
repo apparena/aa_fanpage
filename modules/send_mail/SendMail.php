@@ -10,17 +10,17 @@ class SendMail {
 	private $smtp_pass = "none";
 	private $customer_name = "";
 	private $customer_email = "";
-	private $aa_inst_id;
+	private $i_id;
 	private $customer;
 	private $user;
 	
 	/**
 	 * Initializes a Mail object to send out a mail.
 	 * @param array $smtp Smtp access data as an array: (host, port, user, pass)
-	 * @param int $aa_inst_id App Arena Instance Id
+	 * @param int $i_id App Arena Instance Id
 	 * @param array $sender Email sender data: (name, email) of the user who sent the form
 	 */
-	function __construct($smtp=array(), $aa_inst_id=0, $customer=array(), $user = array()) {
+	function __construct($smtp=array(), $i_id=0, $customer=array(), $user = array()) {
 		
 		if (array_key_exists('host', $smtp))
 			$this->smtp_host = $smtp['host'];
@@ -34,8 +34,8 @@ class SendMail {
 		if (array_key_exists('host', $smtp))
 			$this->smtp_pass = $smtp['pass'];
 		
-		if ($aa_inst_id != 0)
-			$this->aa_inst_id = $aa_inst_id; 
+		if ($i_id != 0)
+			$this->i_id = $i_id;
 		
 		$sender = array(
 			'mail' => $user['email'],

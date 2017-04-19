@@ -1,10 +1,10 @@
 <?php
-$aa_inst_id = "";
-if (isset($_GET['aa_inst_id'])) {
-    $aa_inst_id = $_GET['aa_inst_id'];
+$i_id = "";
+if (isset($_GET['i_id'])) {
+    $i_id = $_GET['i_id'];
 } else {
-    if (isset($_POST['aa_inst_id'])) {
-        $aa_inst_id = $_POST['aa_inst_id'];
+    if (isset($_POST['i_id'])) {
+        $i_id = $_POST['i_id'];
     }
 }
 
@@ -21,11 +21,11 @@ if (isset($_GET['answer'])) {
     }
 }
 
-$aa_inst_id = $_GET["aa_inst_id"];
+$i_id = $_GET["i_id"];
 $share_image_url = $aa['config']['question_1_image_url']['value'];
 $share_desc = $aa['config']['question_1']['value'];
 
-$url = "https://apps.facebook.com/" . $aa['instance']['fb_app_url'] . "/modules/open_graph/object.php?aa_inst_id=" . $aa['instance']['aa_inst_id'];
+$url = "https://apps.facebook.com/" . $aa['instance']['fb_app_url'] . "/modules/open_graph/object.php?i_id=" . $aa['instance']['i_id'];
 $namespace = $aa['instance']['fb_app_url'];
 $redirect_url = $aa['instance']['fb_page_url'] . "?sk=app_" . $aa['instance']['fb_app_id'];
 

@@ -29,7 +29,7 @@ function is_user_registered( callback ) {
 	$.ajax({
 		type : 'POST',
 		async : false,
-		url : 'modules/user/ajax/is_user_registered.php?aa_inst_id=' + aa_inst_id,
+		url : 'modules/user/ajax/is_user_registered.php?i_id=' + i_id,
 		data : ({
 			//fb_user_id : $.jStorage.get( 'fb_user_id')
 			fb_user_id : fb_user_id
@@ -48,7 +48,7 @@ function save_user() {
 	$.ajax({
 		type : 'POST',
 		async : true,
-		url : 'modules/user/ajax/save_user.php?aa_inst_id=' + aa_inst_id,
+		url : 'modules/user/ajax/save_user.php?i_id=' + i_id,
 		data : ({
 			/*fb_user_id : $.jStorage.get( 'fb_user_id'),
 			fb_user_name : $.jStorage.get( 'fb_user_name'),

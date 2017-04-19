@@ -3,7 +3,7 @@ require_once '../../init.php';
 require_once 'config.php';
 require_once 'Newsletter.php';
 
-$newsletter = new Newsletter($db2, $smtp_config, $_GET['aa_inst_id'], $sender);
+$newsletter = new Newsletter($db2, $smtp_config, $_GET['i_id'], $sender);
 
 
 ?>
@@ -27,7 +27,7 @@ $fb_app_url=$session->instance['fb_page_url']."?sk=app_".$session->instance['fb_
 If (isset($_GET['data'])) {
 	$receiver = json_decode(base64_decode($_GET['data']), true);
 	// Register newsletter subsription
-	$check = $newsletter->register_new_subscription($receiver, $session->instance['aa_inst_id']);
+	$check = $newsletter->register_new_subscription($receiver, $session->instance['i_id']);
 	if ( $check == false ) {
 		echo '<div class="alert alert-error">Die Newsletter Anmeldung hat leider nicht geklappt.</div>';
 		exit( 0 );

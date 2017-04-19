@@ -12,7 +12,7 @@ function initApp(landingPageTemplate) {
 
     // set the first menu item as the landing content.
     $("#main").slideUp(0, function () {
-        $("#main").load("templates/" + landingContent + ".phtml?aa_inst_id=" + aa_inst_id, function () {
+        $("#main").load("templates/" + landingContent + ".phtml?i_id=" + i_id, function () {
             $("#main").slideDown();
             hide_loading();
         });
@@ -76,7 +76,7 @@ function initMenu() {
                 // template class found, get the filename (format: "welcome-filename")
                 var templateToLoad = thisClasses[x].split("-")[1];
 
-//alert("element " + index + " has a template class: " + thisClasses[x] + "\nusing template: " + templateToLoad + ".phtml?aa_inst_id=" + aa_inst_id );
+//alert("element " + index + " has a template class: " + thisClasses[x] + "\nusing template: " + templateToLoad + ".phtml?i_id=" + i_id );
 
                 // bind an onclick function to this menu element
                 $(this).click(function () {
@@ -87,7 +87,7 @@ function initMenu() {
                     // if clicked, load the template into the #main div (append ".phtml" to the template filename)
                     $("#main").slideUp(0, function () {
 
-                        $("#main").load("templates/" + templateToLoad + ".phtml?aa_inst_id=" + aa_inst_id, function () {
+                        $("#main").load("templates/" + templateToLoad + ".phtml?i_id=" + i_id, function () {
 
                             $("#main").slideDown();
 
@@ -125,7 +125,7 @@ function initMenu() {
 
                 $("#main").slideUp(0, function () {
 
-                    $("#main").load("templates/default.phtml?aa_inst_id=" + aa_inst_id, function () {
+                    $("#main").load("templates/default.phtml?i_id=" + i_id, function () {
 
                         $("#main").slideDown();
 

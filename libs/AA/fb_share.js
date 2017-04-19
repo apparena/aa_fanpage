@@ -9,7 +9,7 @@ function fb_multi_friend_selector( params, request_callback ) {
     FB.ui({ method:         'apprequests',
             message:        params.desc,
             redirect_uri:   params.share_url,
-            data:           params.aa_inst_id
+            data:           params.i_id
     }, request_callback);
 }
 

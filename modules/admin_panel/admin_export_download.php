@@ -2,7 +2,7 @@
 require_once( '../../init.php');
 ini_set('display_errors', 1);
 
-$aa_inst_id = $_GET['aa_inst_id'];
+$i_id = $_GET['i_id'];
 
 $from = '';
 $from_date = '';
@@ -24,7 +24,7 @@ if ( isset( $_POST[ 'to' ] ) && strlen( $_POST[ 'to' ] ) > 0 ) {
 //TODO: log admin activity
 $key = get_fb_user_id();
 $ip = get_client_ip();
-$query = "INSERT INTO `user_log` set `key` = '" . $key . "', `action` = 'user export', `ip` = '" . $ip . "', `aa_inst_id` = " . $aa_inst_id;
+$query = "INSERT INTO `user_log` set `key` = '" . $key . "', `action` = 'user export', `ip` = '" . $ip . "', `i_id` = " . $i_id;
 
 echo $query . "<br />";
 
@@ -47,7 +47,7 @@ if ( $result ) {
 
 // get users data
 // Get participants
-$query = "SELECT * FROM `user_data` WHERE `aa_inst_id` = " . ( (int) $aa_inst_id ) . $from . $to;
+$query = "SELECT * FROM `user_data` WHERE `i_id` = " . ( (int) $i_id ) . $from . $to;
 $result = mysql_query( $query );
 if ( $result ) {
 	
@@ -56,7 +56,7 @@ if ( $result ) {
 	}
 }
 
-$arrData = $lottery->getParticipantList($aa_inst_id, ", `timestamp`, `ip`,
+$arrData = $lottery->getParticipantList($i_id, ", `timestamp`, `ip`,
 `newsletter_registration`,`newsletter_doubleoptin`,`tickets`, `answers_correct`, `question1_answer`, `question2_answer`, `question3_answer`, `award_selection`", $_POST['from'], $_POST['to']);
 
 $arrTitle = array(

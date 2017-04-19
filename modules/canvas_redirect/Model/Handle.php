@@ -9,17 +9,17 @@
       */
       function handle()
       {
-         //get aa_inst_id from user
+         //get i_id from user
          $fb_user_id=get_user_id();
 
          if($fb_user_id != false)
          {
-            $aa_inst_id=$this->getInstanceIdFromLog($fb_user_id);
-            return $aa_inst_id;
+            $i_id=$this->getInstanceIdFromLog($fb_user_id);
+            return $i_id;
          }
 
 
-         //get aa_inst_id from fb_page_url
+         //get i_id from fb_page_url
 
          $fb_page_url=getServer("HTTP_REFERER");
 
@@ -59,20 +59,20 @@
                   $facebook->login("js_top","publish_actions",$params);
                }
 
-               $aa_inst_id=$this->getInstanceIdFromAction();
+               $i_id=$this->getInstanceIdFromAction();
 
-               if($aa_inst_id > 0)
+               if($i_id > 0)
                {
-                  return $aa_inst_id;
+                  return $i_id;
                }
 
-               //get aa_inst_id from user
+               //get i_id from user
                $fb_user_id=$facebook->getUserId();
 
                if($fb_user_id != false)
                {
-                  $aa_inst_id=$this->getInstanceIdFromLog($fb_user_id);
-                  return $aa_inst_id;
+                  $i_id=$this->getInstanceIdFromLog($fb_user_id);
+                  return $i_id;
                }
                else
                {
@@ -80,7 +80,7 @@
                   $friends=$facebook->getFriends($fb_user_id);
                   if($friends != false)
                   {
-                     //$aa_inst_ids=$this->getFriendsInstance($friend_ids);
+                     //$i_ids=$this->getFriendsInstance($friend_ids);
                      //render template
                      $this->setDefaultTemplate($friends);
                      return false;
@@ -104,9 +104,9 @@
       {
          $model=getModule("app_log")->getModel("User");
 
-         $aa_inst_id=$model->ask('app_log',"getInstanceIdFromLog",array('fb_user_id'=>$fb_user_id));
+         $i_id=$model->ask('app_log',"getInstanceIdFromLog",array('fb_user_id'=>$fb_user_id));
 
-         return $aa_inst_id;
+         return $i_id;
       }
 
       /**
@@ -129,14 +129,14 @@
             return false;
          }
 
-         $aa_inst_id=getValue($action['data'],'aa_inst_id');
+         $i_id=getValue($action['data'],'i_id');
 
-         if($aa_inst_id == false)
+         if($i_id == false)
          {
             return false;
          }
 
-         return $aa_inst_id;
+         return $i_id;
       }
 
       function setDefaultTemplate($friends)

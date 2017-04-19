@@ -138,9 +138,9 @@ function is_admin()
 /**
  * check if current user is admin of this app
  */
-function app_is_admin($aa_inst_id)
+function app_is_admin($i_id)
 {
-    $session = new Zend_Session_Namespace("instance_" . $aa_inst_id);
+    $session = new Zend_Session_Namespace("instance_" . $i_id);
     if (!isset($session->is_admin) || $session->is_admin == false)
         return false;
     else
@@ -628,14 +628,14 @@ function checkString($str, $msg = 'invalid string')
 /**
  * check if  user can upload image
  */
-function  can_upload($aa_inst_id, $user_id)
+function  can_upload($i_id, $user_id)
 {
     global $global;
     $db = $global->db;
 
     $select = $db->select();
     $select->from('competition_join', 'count(*)');
-    $select->where('aa_inst_id=?', $aa_inst_id);
+    $select->where('i_id=?', $i_id);
     $select->where('fb_userid=?', $user_id);
     //echo $select;
     $ret = $db->fetchOne($select);
@@ -668,11 +668,11 @@ function get_user_info_byjoinid($join_id)
 }
 
 /**
- * must with aa_inst_id in the  key ,otherwise will conflict
+ * must with i_id in the  key ,otherwise will conflict
  */
-function generateSessionKey($aa_inst_id)
+function generateSessionKey($i_id)
 {
-    return "instance_" . $aa_inst_id;
+    return "instance_" . $i_id;
 }
 
 function parse_signed_request($signed_request)
@@ -727,9 +727,9 @@ function authFacebook($app_id, $app_secret, $next = '', $cancel_url = '')
     return true;
 }
 
-function app_is_fan($aa_inst_id)
+function app_is_fan($i_id)
 {
-    $session = new Zend_Session_Namespace("instance_" . $aa_inst_id);
+    $session = new Zend_Session_Namespace("instance_" . $i_id);
     if (!isset($session->is_fan) || $session->is_fan == false)
         return false;
     else

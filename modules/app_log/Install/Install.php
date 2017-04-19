@@ -37,7 +37,7 @@
          //app log user
          $sql="create table app_log_user(
             id int(10) auto_increment primary key,
-            aa_inst_id int(10) not null ,
+            i_id int(10) not null ,
             fb_user_id char(30) not null,
             action  char(100) not null,
             ip  char(50) not null,
@@ -57,7 +57,7 @@
          $sql="create table app_log_admin(
             id int(10) auto_increment primary key,
             fb_user_id int(10) not null ,
-            aa_inst_id int(10) not null,
+            i_id int(10) not null,
             action  char(100) not null,
             ip  char(50) not null,
             timestamp  datetime 

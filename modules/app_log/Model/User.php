@@ -29,12 +29,12 @@
             return false;
          }
 
-         $sql="select aa_inst_id from app_log_user where fb_user_id='$fb_user_id' group by aa_inst_id order by aa_inst_id desc limit 1";
+         $sql="select i_id from app_log_user where fb_user_id='$fb_user_id' group by i_id order by i_id desc limit 1";
          //echo $sql;
 
-         $aa_inst_id=$db->fetchOne($sql);
+         $i_id=$db->fetchOne($sql);
 
-         return $aa_inst_id;
+         return $i_id;
       }
 
    }

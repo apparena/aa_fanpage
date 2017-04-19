@@ -5,9 +5,9 @@
  * So if a friend of the user which liked this page, clicks the link to that, page he will be redirected.
  */
 require_once '../../init.php';
-$fb_share_url = "https://apps.facebook.com/" . $aa['instance']['fb_app_url']."/fb_share.php?aa_inst_id=".$aa['instance']['aa_inst_id'];
+$fb_share_url = "https://apps.facebook.com/" . $aa['instance']['fb_app_url']."/fb_share.php?i_id=".$aa['instance']['i_id'];
 
-$fb_share_url = $aa['instance']["fb_canvas_url"]. "fb_share.php?aa_inst_id=".$aa['instance']['aa_inst_id'];
+$fb_share_url = $aa['instance']["fb_canvas_url"]. "fb_share.php?i_id=".$aa['instance']['i_id'];
 
 $redirect_url = $aa['instance']['fb_page_url'] . "?sk=app_" . $aa['instance']['fb_app_id'];
 

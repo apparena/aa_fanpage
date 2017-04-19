@@ -15,7 +15,7 @@ class AA_AppManager {
 	protected $soap_params= array(
 		'aa_app_id'		=> false,
 		'aa_app_secret'	=> false,
-		'aa_inst_id'	=> false,
+		'i_id'	=> false,
 		'fb_page_id'	=> false,
 		'locale'		=> false,
 	);
@@ -30,7 +30,7 @@ class AA_AppManager {
 		$keys = array(
 			'aa_app_id',
 			'aa_app_secret',
-			'aa_inst_id',
+			'i_id',
 			'fb_page_id'
 		);
 		
@@ -46,7 +46,7 @@ class AA_AppManager {
 		if( $this->soap_params['aa_app_secret'] == false ) {
 			throw new Exception("missing parameter  aa_app_secret");
 		}
-		if( $this->soap_params['aa_inst_id'] == false && $this->soap_params['fb_page_id'] == false ) {
+		if( $this->soap_params['i_id'] == false && $this->soap_params['fb_page_id'] == false ) {
 			$this->soap_params['fb_page_id'] = $this->getFbPageId();
 		}
 		if( isset( $params['server_url'] ) && $params['server_url'] != false ) {
@@ -156,12 +156,12 @@ class AA_AppManager {
 	}
 	
 	/**
-	* Get app's current aa_inst_id
+	* Get app's current i_id
 	* @return int
 	*/
 	function getInstanceId() {
-		$aa_inst_id = $this->call('getInstanceId');
-		return $aa_inst_id;
+		$i_id = $this->call('getInstanceId');
+		return $i_id;
 	}
 
 	/**

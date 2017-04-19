@@ -19,7 +19,7 @@ if ( isset( $session->config['nl_email_body']['value'] ) )
 
 
 // Init newsletter object and send email
-$newsletter = new Newsletter($db2, $smtp_config, $_GET['aa_inst_id'], $sender);
+$newsletter = new Newsletter($db2, $smtp_config, $_GET['i_id'], $sender);
 $ret = $newsletter->send_confirmation_email($receiver, $email);
 
 /*if($ret == true) {

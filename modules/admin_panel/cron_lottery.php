@@ -42,12 +42,12 @@ $timestamp = date('Y-m-d H:i:s', time());
 $aa_instances = array();
 while ($row = mysql_fetch_array($result)) {
 
-    $aa_instances[] = $row['aa_inst_id'];
+    $aa_instances[] = $row['i_id'];
 
     // Check if round reset recordset already exists in DB
     $sql = "SELECT `config_value`
 				FROM `app_config` 
-				WHERE aa_inst_id=" . $row['aa_inst_id'] .
+				WHERE i_id=" . $row['i_id'] .
         " AND `config_key`='round_reset_timestamp'
 				LIMIT 1";
 
@@ -59,15 +59,15 @@ while ($row = mysql_fetch_array($result)) {
         $sql = "UPDATE `app_config`
 					SET `config_value` = '$timestamp'
 					WHERE `config_key` = 'round_reset_timestamp' 
-					AND `aa_inst_id` = '" . $row['aa_inst_id'] . "'
+					AND `i_id` = '" . $row['i_id'] . "'
 					LIMIT 1";
 
     } else {
         $sql = "INSERT INTO `app_config`
-					       (`aa_inst_id`,
+					       (`i_id`,
 					        `config_key`,
 					        `config_value`)
-					VALUES ('" . $row['aa_inst_id'] . "',
+					VALUES ('" . $row['i_id'] . "',
 					        'round_reset_timestamp',
 					        '$timestamp')";
 
@@ -85,8 +85,8 @@ echo "Automatic Reset of instances\n";
 echo "Date: " . $today . ", " . $timestamp . "\n";
 echo "Total number of instances reseted: " . $results_all . "\n";
 echo "Instances affected:\n";
-foreach ($aa_instances as $aa_inst_id) {
-    echo "\t" . $aa_inst_id . "\n";
+foreach ($aa_instances as $i_id) {
+    echo "\t" . $i_id . "\n";
 }
 
 //echo "changed / updated >".$results_all."< entries...<br /><br />";

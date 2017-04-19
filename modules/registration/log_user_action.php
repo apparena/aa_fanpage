@@ -6,13 +6,13 @@
  * A user action can be logged specifying some data to be saved additionally to the user action.
  * @requirements SQL-permissions CREATE, INSERT, SELECT for the db-user defined in the file "root/config.php".
  * @requirements A POST parameter 'log' containing a user 'key' and a user 'action' ($_POST['log']['key'], $_POST['log']['action']). The related 'data' is not mandatory.
- * @requirements App-Arena instance id in GET parameter: $_GET['aa_inst_id']
+ * @requirements App-Arena instance id in GET parameter: $_GET['i_id']
  */
 	
     include_once ( '../../init.php' );
     
-    $aa_inst_id = 0;
-    if ( isset( $_GET[ 'aa_inst_id' ] ) ) { $aa_inst_id = $_GET[ 'aa_inst_id' ]; } else { echo json_encode( array( 'error' => 'missing aa_inst_id' ) ); exit( 0 ); }
+    $i_id = 0;
+    if ( isset( $_GET[ 'i_id' ] ) ) { $i_id = $_GET[ 'i_id' ]; } else { echo json_encode( array( 'error' => 'missing i_id' ) ); exit( 0 ); }
     
     $log = false; // this will fetch the $_POST['log'] data
     $response = array(); // this response goes back to the success function of the calling javascript at the end
@@ -35,7 +35,7 @@
     // create this table if it does not exist
     $query = "CREATE TABLE IF NOT EXISTS `user_log` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
-				  `aa_inst_id` int(11) NOT NULL,
+				  `i_id` int(11) NOT NULL,
 				  `user_data_id` int(11) DEFAULT NULL,
 				  `data` text,
 				  `action` varchar(32) DEFAULT NULL,
@@ -47,7 +47,7 @@
     
     if ( isset( $user_key ) && strlen( $user_key ) > 0 ) {
     	// check if the user already exists
-    	$query = "SELECT * FROM `user_data` WHERE `user_data_id` = '" . $user_key . "' AND `aa_inst_id` = " . ( (int) $aa_inst_id );
+    	$query = "SELECT * FROM `user_data` WHERE `user_data_id` = '" . $user_key . "' AND `i_id` = " . ( (int) $i_id );
     } else {
     	echo json_encode( array( 'error' => 'you must provide a log[ "key" ] containing a FB user_id or the users email address!' ) );
     	exit( 0 );
@@ -73,7 +73,7 @@
     		}
             /* TMPL-17: use the user_data.id instead of user_data.key to identify the user */
             $user_id = $row[ 'id' ];
-    		$query = "INSERT INTO `user_log` SET `aa_inst_id` = " . ( (int) $aa_inst_id ) . ", `user_data_id` = " . $user_id . ", `data` = '" . $log[ 'data' ] . "', `ip` = '" . $client_ip . "', `action` = '" . $log[ 'action' ] . "'";
+    		$query = "INSERT INTO `user_log` SET `i_id` = " . ( (int) $i_id ) . ", `user_data_id` = " . $user_id . ", `data` = '" . $log[ 'data' ] . "', `ip` = '" . $client_ip . "', `action` = '" . $log[ 'action' ] . "'";
     		
     		mysql_query( $query );
     	} else {

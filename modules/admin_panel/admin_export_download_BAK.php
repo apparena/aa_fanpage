@@ -2,12 +2,12 @@
 require_once(dirname(__FILE__) . '/../init.php');
 ini_set('display_errors', 1);
 
-$aa_inst_id = $_GET['aa_inst_id'];
+$i_id = $_GET['i_id'];
 
 //Register Admin
 $lottery = new iCon_Lottery($aa_app_id);
 $action = "CSVExport";
-$lottery->registerAdmin($session->user["id"], $aa_inst_id, $action);
+$lottery->registerAdmin($session->user["id"], $i_id, $action);
 
 //Export of the User Data
 $exporter = new iCon_Export();
@@ -24,7 +24,7 @@ if (isset($session->fb) && isset($session->fb['fb_user_id'])) {
 
 $data = array(
     'fb_user_id' => $fb_user_id,
-    'aa_inst_id' => $aa_inst_id,
+    'i_id' => $i_id,
     'action' => 'export',
     'ip' => getClientIp(),
     'timestamp' => date("Y-m-d H:i:s"),
@@ -36,7 +36,7 @@ $admin->add($data);
 
 //get data
 // Get participants
-$arrData = $lottery->getParticipantList($aa_inst_id, ", `timestamp`, `ip`,
+$arrData = $lottery->getParticipantList($i_id, ", `timestamp`, `ip`,
 `newsletter_registration`,`newsletter_doubleoptin`,`tickets`, `answers_correct`, `question1_answer`, `question2_answer`, `question3_answer`, `award_selection`", $_POST['from'], $_POST['to']);
 
 $arrTitle = array(

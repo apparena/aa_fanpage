@@ -38,7 +38,7 @@ function aa_tmpl_load( tmpl_filename, params ) {
         effect = 'slidedown';
     }
 
-    var url = "templates/" + tmpl_filename + "?aa_inst_id=" + aa.inst.aa_inst_id + data;
+    var url = "templates/" + tmpl_filename + "?i_id=" + aa.inst.id + data;
     if ( effect == 'fade' ) {
         $(target).fadeOut(0, function () {
             $(target).load( url, function () {
@@ -70,9 +70,9 @@ function open_popup( url, name ) {
 
 function setAdminIntroCookie() {
     if ($('#admin-intro').is(':checked')) {
-        setCookie('admin_intro_' + aa_inst_id, true);
+        setCookie('admin_intro_' + i_id, true);
     } else {
-        setCookie('admin_intro_' + aa_inst_id, false);
+        setCookie('admin_intro_' + i_id, false);
     }
 }
 
@@ -99,7 +99,7 @@ function sendForm() {
 
 function sendMail ( user_data ) {
 	
-	send_mail( aa.inst.aa_inst_id, user_data, sendMailCallback );
+	send_mail( aa.inst.i_id, user_data, sendMailCallback );
 	
 }
 

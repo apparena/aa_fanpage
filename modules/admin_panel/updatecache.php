@@ -2,16 +2,16 @@
 require_once(dirname(__FILE__) . '/../init.php');
 
 
-$aa_inst_id = intval($_GET['aa_inst_id']);
+$i_id = intval($_GET['i_id']);
 
-if ($aa_inst_id <= 0) {
-    echo "missing parameter aa_inst_id";
+if ($i_id <= 0) {
+    echo "missing parameter i_id";
     exit();
 }
 
 //update app cached time
 $cache = new Cache();
-$cache->updateCachedTime($aa_inst_id);
+$cache->updateCachedTime($i_id);
 ?>
 
 <p>

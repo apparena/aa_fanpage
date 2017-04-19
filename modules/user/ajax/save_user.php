@@ -122,7 +122,7 @@
 	
 	$appPartSql = "SELECT * FROM `app_participation`
 				   WHERE `fb_user_id` = '" . $fb_user_id . "' 
-				   AND `aa_inst_id` = '" . $aa_inst_id . "'";
+				   AND `i_id` = '" . $i_id . "'";
 	
 	$appPartResult = $db->get_result( $appPartSql );	
 	
@@ -133,7 +133,7 @@
 		// Insert the user to app_participation for this instance if he is not in there yet.
 		$insertUserParticipationSql = "INSERT INTO `app_participation` 
 									   SET `fb_user_id` = " . $fb_user_id . ",
-									   `aa_inst_id` = " . $aa_inst_id;
+									   `i_id` = " . $i_id;
 		
 		// Get client ip address
 		if ( isset($_SERVER["REMOTE_ADDR"]))

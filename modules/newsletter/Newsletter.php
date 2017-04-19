@@ -11,16 +11,16 @@ class Newsletter {
 	private $smtp_pass = "none";
 	private $sender_name = "";
 	private $sender_email = "";
-	private $aa_inst_id;
+	private $i_id;
 	
 	/**
 	 * Initializes a Newsletter object to send out newsletter using double opt in registration
 	 * @param DBConnection $db Database connection
 	 * @param array $smtp Smtp access data as an array: (host, port, user, pass)
-	 * @param int $aa_inst_id App Arena Instance Id
+	 * @param int $i_id App Arena Instance Id
 	 * @param array $sender Email sender data: (name, email)
 	 */
-	function __construct($db, $smtp=array(), $aa_inst_id=0, $sender=array()) {
+	function __construct($db, $smtp=array(), $i_id=0, $sender=array()) {
 		$this->db = $db;
 		
 		$this->init_db(); // Initialize database
@@ -37,8 +37,8 @@ class Newsletter {
 		if (array_key_exists('host', $smtp))
 			$this->smtp_pass = $smtp['pass'];
 		
-		if ($aa_inst_id != 0)
-			$this->aa_inst_id = $aa_inst_id; 
+		if ($i_id != 0)
+			$this->i_id = $i_id;
 		
 		$this->set_sender($sender);
 	}
@@ -54,7 +54,7 @@ class Newsletter {
 		if( !$this->array_searchRecursive("nl_registration", $result)) {
 			$sql = "CREATE TABLE `nl_registration` (
 			`id` int(11) NOT NULL AUTO_INCREMENT,
-			`aa_inst_id` int(11) NOT NULL COMMENT 'App-Arena Instance Id',
+			`i_id` int(11) NOT NULL COMMENT 'App-Arena Instance Id',
 			`email` varchar(128) NOT NULL COMMENT 'User''s email address',
 			`name` varchar(128) DEFAULT NULL COMMENT 'Name of the user',
 			`gender` varchar(16) DEFAULT NULL COMMENT 'Gender of the user',
@@ -79,7 +79,7 @@ class Newsletter {
 		
 		$str_receiver = base64_encode(json_encode($receiver));
 		$path = "http://" . $_SERVER["SERVER_NAME"] . dirname($_SERVER["REQUEST_URI"]);
-		$confirmationURL = $path . "/../modules/newsletter/confirm_newsletter_registration.php" . '?aa_inst_id=' . $this->aa_inst_id . '&data=' . $str_receiver;
+		$confirmationURL = $path . "/../modules/newsletter/confirm_newsletter_registration.php" . '?i_id=' . $this->i_id . '&data=' . $str_receiver;
 
 		$confirmationLink = "<a href='" . $confirmationURL . "'>" . __t("confirm_newsletter_registration") . "</a>";
 		
@@ -146,7 +146,7 @@ class Newsletter {
 	 * Save a new double opt in newsletter subscription to the database including ip and timestamp
 	 * @param array $receiver base64 (name, email) of the newsletter receiver
 	 */
-	function register_new_subscription($receiver=array(), $aa_inst_id){
+	function register_new_subscription($receiver=array(), $i_id){
 		if ( !is_array( $receiver ) ) {
 			return false;
 		}
@@ -160,7 +160,7 @@ class Newsletter {
 		// Update table app_participation, columns timestam, ip, newsletter_registration
 		// Get fb_user_id from email-address
 		$sql = "SELECT `email` FROM `nl_registration` WHERE `email`='" . $receiver_email . "'
-				AND `aa_inst_id`=" . $this->aa_inst_id . " LIMIT 1";
+				AND `i_id`=" . $this->i_id . " LIMIT 1";
 		$receiver_existing = $this->db->fetchOne($sql);
 		
 		if ( $receiver_existing ) {
@@ -169,12 +169,12 @@ class Newsletter {
 					`name`='" . $receiver_name  . "',
 					`ip`='" . $client_ip  . "' 
 					WHERE `email` = '" . $receiver_existing[0] . "'
-					AND aa_inst_id=" . $this->aa_inst_id . ";";
+					AND i_id=" . $this->i_id . ";";
 			return $this->db->query($sql);
 		} else {
 			$sql = "INSERT INTO `nl_registration`
 					SET `is_confirmed` = 1, 
-						`aa_inst_id`=" . $this->aa_inst_id  . ",
+						`i_id`=" . $this->i_id  . ",
 						`email`='" . $receiver_email  . "',
 						`name`='" . $receiver_name  . "',
 						`ip`='" . $client_ip . "'";
@@ -187,11 +187,11 @@ class Newsletter {
 	 * the config page update user's confirm state
 	 *
 	 */
-	function updateConfirm($aa_inst_id,$fb_user_id)
+	function updateConfirm($i_id,$fb_user_id)
 	{
 		//update app_participation
-		$lottery = new iCon_Lottery($aa_inst_id,getConfig('aa_app_id'));
-		$id=$lottery->isUserParticipating($fb_user_id, $aa_inst_id) ;
+		$lottery = new iCon_Lottery($i_id,getConfig('aa_app_id'));
+		$id=$lottery->isUserParticipating($fb_user_id, $i_id) ;
 
 		if($id != false)
 		{

@@ -51,12 +51,12 @@ Requirements:
   - The data will be passed to the save_user.php in the $_POST.
 
 - Log an action:
-  $.register_log_action = function ( aa_inst_id, 'myAction', 'some data or empty', callbackSuccessLog, callbackErrorLog );
+  $.register_log_action = function ( i_id, 'myAction', 'some data or empty', callbackSuccessLog, callbackErrorLog );
   -> Log an action to the db. The action can be anything, but should be provided. The data is not mandatory.
   -> The log_user_action.php script will return a JSON response containing the received data and some descriptions of its actions.
 
 - Save the user object:
-  $.register_save_user_data = function( aa_inst_id, callbackSuccessSave, callbackErrorSave );
+  $.register_save_user_data = function( i_id, callbackSuccessSave, callbackErrorSave );
   -> Save the $.register_user_data object to the db. The save_user.php script will be called receiving a $_POST['user'], using the
      $_POST['user']['key'] as the identifier for the db.
   -> The save_user.php script will return a JSON response containing the received data and some descriptions of its actions.

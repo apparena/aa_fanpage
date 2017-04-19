@@ -26,14 +26,14 @@
 
          $data=array(
             'fb_user_id'=>100,
-            'aa_inst_id'=>10,
+            'i_id'=>10,
             'action'=>'add',
             'ip'=>'10.10.10.10',
             'timestamp'=>$now,
          );
          $admin_log->add($data);
 
-         $sql="select count(*) from app_log_admin where fb_user_id=100 and aa_inst_id=10 and action='add' and ip='10.10.10.10' and timestamp = '$now'";
+         $sql="select count(*) from app_log_admin where fb_user_id=100 and i_id=10 and action='add' and ip='10.10.10.10' and timestamp = '$now'";
 
          $ret=$db->fetchOne($sql);
 

@@ -1,10 +1,10 @@
 <?php
-$aa_inst_id = "";
-if (isset($_GET['aa_inst_id'])) {
-    $aa_inst_id = $_GET['aa_inst_id'];
+$i_id = "";
+if (isset($_GET['i_id'])) {
+    $i_id = $_GET['i_id'];
 } else {
-    if (isset($_POST['aa_inst_id'])) {
-        $aa_inst_id = $_POST['aa_inst_id'];
+    if (isset($_POST['i_id'])) {
+        $i_id = $_POST['i_id'];
     }
 }
 $object = "questions";
@@ -27,13 +27,13 @@ if (isset($_GET['answer'])) {
 
 include_once '../../init.php';
 $question = "1";
-$aa_inst_id = $_GET["aa_inst_id"];
+$i_id = $_GET["i_id"];
 $share_image_url = $aa['config']['share_image_url']['value'];
 $share_title = $aa['config']['question_' . $question]['value'];
 $share_desc = __t("post_answer_test", $answer);
 
-$url = "https://apps.facebook.com/" . $aa['instance']['fb_app_url'] . "/modules/open_graph/object.php?aa_inst_id=" . $aa['instance']['aa_inst_id'];
-$action_url = "https://apps.facebook.com/" . $aa['instance']['fb_app_url'] . "/modules/open_graph/object_link.php?aa_inst_id=" . $aa['instance']['aa_inst_id'];
+$url = "https://apps.facebook.com/" . $aa['instance']['fb_app_url'] . "/modules/open_graph/object.php?i_id=" . $aa['instance']['i_id'];
+$action_url = "https://apps.facebook.com/" . $aa['instance']['fb_app_url'] . "/modules/open_graph/object_link.php?i_id=" . $aa['instance']['i_id'];
 $namespace = $aa['instance']['fb_app_url'];
 $redirect_url = $aa['instance']['fb_page_url'] . "?sk=app_" . $aa['instance']['fb_app_id'];
 $is_correct = __t("is_correct")
@@ -43,7 +43,7 @@ $is_correct = __t("is_correct")
 
     <meta property="fb:app_id" content="<?php echo $aa['instance']['fb_app_id']; ?>"/>
     <meta property="og:type" content="<?=$namespace . ':' . $object?>"/>
-    <meta property="og:aa_inst_id" content="<?php echo $aa['instance']['aa_inst_id']; ?>"/>
+    <meta property="og:i_id" content="<?php echo $aa['instance']['i_id']; ?>"/>
     <meta property="og:url" content="<?php echo $url; ?>"/>
     <meta property="og:title" content=" <?php echo $share_title?>"/>
     <meta property="og:description" content="<?php echo $share_desc; ?>"/>

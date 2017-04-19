@@ -6,7 +6,7 @@ require_once(dirname(__FILE__) . '/../../../init.php');
 function get_winner($data)
 {
     global $aa_app_id, $session;
-    $aa_inst_id = $data['aa_inst_id'];
+    $i_id = $data['i_id'];
 
     //add admin log
     $admin = getModule("app_log")->getTable("admin");
@@ -20,7 +20,7 @@ function get_winner($data)
 
     $data = array(
         'fb_user_id' => $fb_user_id,
-        'aa_inst_id' => $aa_inst_id,
+        'i_id' => $i_id,
         'action' => 'get winner',
         'ip' => getClientIp(),
         'timestamp' => date("Y-m-d H:i:s"),
@@ -32,24 +32,24 @@ function get_winner($data)
 
 
     //Register Admin
-    $lottery = new iCon_Lottery($aa_inst_id, $aa_app_id);
+    $lottery = new iCon_Lottery($i_id, $aa_app_id);
     $action = "GetWinner";
-    $lottery->registerAdmin($session->user["id"], $aa_inst_id, $action);
+    $lottery->registerAdmin($session->user["id"], $i_id, $action);
 
     // Check if there are time boundaries and get participants
     if (isset($_REQUEST['from']) && isset($_REQUEST['to'])) {
-        $participants = $lottery->getParticipantList($aa_inst_id, ',name',
+        $participants = $lottery->getParticipantList($i_id, ',name',
             $_REQUEST['from'], $_REQUEST['to']);
     } else {
-        $participants = $lottery->getParticipantList($aa_inst_id, ',name');
+        $participants = $lottery->getParticipantList($i_id, ',name');
     }
 
     // Check if several winners have to be returned
     if (isset($_REQUEST['winners'])) {
-        $arrWinner = $lottery->getWinner($participants, $aa_inst_id,
+        $arrWinner = $lottery->getWinner($participants, $i_id,
             $_REQUEST['winners']);
     } else {
-        $arrWinner = $lottery->getWinner($participants, $aa_inst_id);
+        $arrWinner = $lottery->getWinner($participants, $i_id);
     }
 
     //no winner
